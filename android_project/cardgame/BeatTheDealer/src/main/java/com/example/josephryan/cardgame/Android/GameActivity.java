@@ -42,6 +42,8 @@ public class GameActivity extends AppCompatActivity {
         Log.d("Player number of cards:", playerHasCards);
         String dealerHasCards = Integer.toString(dealer.getHand().size());
         Log.d("Dealer number of cards:", dealerHasCards);
+
+
     }
 
 
