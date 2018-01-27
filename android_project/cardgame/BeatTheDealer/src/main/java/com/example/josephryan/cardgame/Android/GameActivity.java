@@ -20,6 +20,8 @@ public class GameActivity extends AppCompatActivity {
     Player player1;
     Button dealButton;
     TextView playerCards;
+    Integer maxClicks = 2;
+    Integer currentClicks = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onDealButtonClick(View button){
+        if(currentClicks == maxClicks){
+            button.setEnabled(false);
+        } else {
+            currentClicks += 1;
+        }
         dealer.dealForRound();
 
         String playerHasCards = Integer.toString(player1.getHand().size());
