@@ -1,19 +1,18 @@
-package com.example.josephryan.cardgame;
-import java.lang.reflect.Array;
+package com.example.josephryan.cardgame.Java;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Card;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Deck;
+
 import java.util.ArrayList;
 
 public class Dealer extends Person{
 
     Deck deck;
     ArrayList<Player> playersInGame;
-    ArrayList<Card> hand;
 
     public Dealer(Deck deck){
-        super(hand);
         this.deck = deck;
         this.playersInGame = new ArrayList<>();
     }
-
 
     public Deck getDeck() {
         return this.deck;
@@ -39,10 +38,6 @@ public class Dealer extends Person{
     public void dealToSelf() {
         Card card = deck.removeCard();
         this.acceptCard(card);
-    }
-
-    public void acceptCard(Card card){
-        this.hand.add(card);
     }
 
     public int checkCardValue(Player player) {

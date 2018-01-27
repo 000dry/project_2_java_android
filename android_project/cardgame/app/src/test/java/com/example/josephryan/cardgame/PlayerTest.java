@@ -1,5 +1,10 @@
 package com.example.josephryan.cardgame;
 
+import com.example.josephryan.cardgame.Java.DeckOfCards.Card;
+import com.example.josephryan.cardgame.Java.Player;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Rank;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Suit;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +19,8 @@ public class PlayerTest {
 
     @Before
     public void before(){
-        player1 = new Player("Hans");
-        player2 = new Player("Jez");
+        player1 = new Player();
+        player2 = new Player();
         card1 = new Card(Suit.HEARTS, Rank.QUEEN);
     }
 

@@ -1,4 +1,4 @@
-package com.example.josephryan.cardgame;
+package com.example.josephryan.cardgame.Java.DeckOfCards;
 
 import java.util.ArrayList;
 import java.util.Collections;

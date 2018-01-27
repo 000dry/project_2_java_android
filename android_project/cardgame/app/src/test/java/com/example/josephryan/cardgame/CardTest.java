@@ -1,5 +1,9 @@
 package com.example.josephryan.cardgame;
 
+import com.example.josephryan.cardgame.Java.DeckOfCards.Card;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Rank;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Suit;
+
 import org.junit.Before;
 import org.junit.Test;
 
