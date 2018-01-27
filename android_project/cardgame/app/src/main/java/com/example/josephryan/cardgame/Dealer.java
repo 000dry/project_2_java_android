@@ -2,15 +2,15 @@ package com.example.josephryan.cardgame;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Dealer implements IHandable{
+public class Dealer extends Person{
 
     Deck deck;
-    ArrayList<Card> hand;
     ArrayList<Player> playersInGame;
+    ArrayList<Card> hand;
 
     public Dealer(Deck deck){
+        super(hand);
         this.deck = deck;
-        this.hand = new ArrayList<>();
         this.playersInGame = new ArrayList<>();
     }
 
