@@ -40,18 +40,44 @@ public class Dealer extends Person{
         this.acceptCard(card);
     }
 
+    public void dealForRound(){
+        deck.shuffleDeck();
+
+        for(int i = 0; i < this.playersInGame.size(); i++){
+            Player player = this.playersInGame.get(i);
+            this.dealCard(player);
+        }
+        this.dealToSelf();
+    }
+
     public int checkCardValue(Player player) {
        Card playersHand = player.getHand().get(0);
        int value = playersHand.getRank().getValue();
        return value;
     }
 
-    public String compareCards(Player player1, Player player2) {
-        if(checkCardValue(player1) > checkCardValue(player2)) {
-            return "The winner is player 1";
-        } else {
-            return "The winner is player 2";
+    public int checkValueOfHand(Person person) {
+        int value = 0;
+
+        for(int i = 0; i < person.getHand().size(); i++){
+            Card handToCheck = person.getHand().get(i);
+            value += handToCheck.getRank().getValue();
         }
+
+        return value;
     }
+
+//    public boolean resultAgainstDealer() {
+//
+//    }
+
+
+//    public String compareCards(Player player1, Player player2) {
+//        if(checkCardValue(player1) > checkCardValue(player2)) {
+//            return "The winner is player 1";
+//        } else {
+//            return "The winner is player 2";
+//        }
+//    }
 }
 

@@ -20,6 +20,7 @@ public class DealerTest {
     Player player2;
     Card card1;
     Card card2;
+    Card card3;
 
     @Before
     public void before() {
@@ -29,6 +30,7 @@ public class DealerTest {
         player2 = new Player();
         card1 = new Card(Suit.CLUBS, Rank.FOUR);
         card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
+        card3 = new Card(Suit.HEARTS, Rank.TWO);
     }
 
     @Test
@@ -56,6 +58,16 @@ public class DealerTest {
         assertEquals(1, dealer.getHand().size());
     }
 
+    @Test
+    public void canDealARound(){
+        dealer.addPlayer(player1);
+        dealer.addPlayer(player2);
+        dealer.dealForRound();
+        dealer.dealForRound();
+        assertEquals(2, dealer.getHand().size());
+        assertEquals(2, player1.getHand().size());
+        assertEquals(2, player2.getHand().size());
+    }
 
     @Test
     public void canCheckPlayersCardValue(){
@@ -63,12 +75,24 @@ public class DealerTest {
         assertEquals(4, dealer.checkCardValue(player1));
     }
 
-    @Test
-    public void canCompareCards(){
+   @Test
+    public void canGetValueOfAHand__Player(){
         player1.acceptCard(card1);
-        player2.acceptCard(card2);
-        assertEquals("The winner is player 2", dealer.compareCards(player1, player2));
+        player1.acceptCard(card2);
+        assertEquals(11, dealer.checkValueOfHand(player1));
+   }
 
-    }
-
+   @Test
+    public void canCheckValueOfAHand__Dealer(){
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card2);
+        assertEquals(11, dealer.checkValueOfHand(dealer));
+   }
+//   @Test
+//    public void checkForResultAgainstDealer(){
+//        dealer.addPlayer(player1);
+//        player1.acceptCard(card2); //7
+//        dealer.acceptCard(card1); //4
+//        assertEquals(true, dealer.resultAgainstDealer());
+//   }
 }
