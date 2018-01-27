@@ -1,4 +1,4 @@
-package com.example.josephryan.cardgame.Java;
+package com.example.josephryan.cardgame.Java.Person;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Card;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Deck;
 

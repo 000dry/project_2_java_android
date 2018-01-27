@@ -1,9 +1,9 @@
 package com.example.josephryan.cardgame;
 
 import com.example.josephryan.cardgame.Java.DeckOfCards.Card;
-import com.example.josephryan.cardgame.Java.Dealer;
+import com.example.josephryan.cardgame.Java.Person.Dealer;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Deck;
-import com.example.josephryan.cardgame.Java.Player;
+import com.example.josephryan.cardgame.Java.Person.Player;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Rank;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Suit;
 

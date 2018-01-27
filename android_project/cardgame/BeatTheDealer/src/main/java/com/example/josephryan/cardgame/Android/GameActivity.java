@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.example.josephryan.cardgame.Java.Dealer;
+import com.example.josephryan.cardgame.Java.Person.Dealer;
 import com.example.josephryan.cardgame.Java.DeckOfCards.Deck;
-import com.example.josephryan.cardgame.Java.Player;
+import com.example.josephryan.cardgame.Java.Person.Player;
 import com.example.josephryan.cardgame.R;
 
 public class GameActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class GameActivity extends AppCompatActivity {
     Dealer dealer;
     Player player1;
     Button dealButton;
+    TextView playerCards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class GameActivity extends AppCompatActivity {
         player1 = new Player();
         dealer.addPlayer(player1);
         dealButton = findViewById(R.id.deal);
+        playerCards = findViewById(R.id.cards);
 
         String checkPlayersInGame = Integer.toString(dealer.getPlayerCount());
         Log.d("number of players: ", checkPlayersInGame);
@@ -43,7 +46,9 @@ public class GameActivity extends AppCompatActivity {
         String dealerHasCards = Integer.toString(dealer.getHand().size());
         Log.d("Dealer number of cards:", dealerHasCards);
 
+//        player1.getHand().getEachCard();
 
+//        playerCards.setText();
     }
 
 
