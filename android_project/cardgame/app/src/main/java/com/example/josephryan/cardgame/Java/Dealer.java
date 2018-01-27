@@ -67,9 +67,12 @@ public class Dealer extends Person{
         return value;
     }
 
-//    public boolean resultAgainstDealer() {
-//
-//    }
+    public boolean resultAgainstDealer(Person player) {
+        int dealerHand = this.checkValueOfHand(this);
+        int playerHand = this.checkValueOfHand(player);
+
+        return playerHand > dealerHand;
+    }
 
 
 //    public String compareCards(Player player1, Player player2) {

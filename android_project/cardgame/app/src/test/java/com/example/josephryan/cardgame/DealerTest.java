@@ -88,11 +88,12 @@ public class DealerTest {
         dealer.acceptCard(card2);
         assertEquals(11, dealer.checkValueOfHand(dealer));
    }
-//   @Test
-//    public void checkForResultAgainstDealer(){
-//        dealer.addPlayer(player1);
-//        player1.acceptCard(card2); //7
-//        dealer.acceptCard(card1); //4
-//        assertEquals(true, dealer.resultAgainstDealer());
-//   }
+
+   @Test
+    public void checkForResultAgainstDealer(){
+        dealer.addPlayer(player1);
+        player1.acceptCard(card2); //7
+        dealer.acceptCard(card1); //4
+        assertEquals(true, dealer.resultAgainstDealer(player1));
+   }
 }
