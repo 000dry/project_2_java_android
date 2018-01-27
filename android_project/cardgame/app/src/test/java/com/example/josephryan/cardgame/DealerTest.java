@@ -1,3 +1,5 @@
+package com.example.josephryan.cardgame;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,10 +30,23 @@ public class DealerTest {
     }
 
     @Test
+    public void canAddPlayerToGame(){
+        dealer.addPlayer(player1);
+        dealer.addPlayer(player2);
+        assertEquals(2, dealer.getPlayerCount());
+    }
+
+    @Test
     public void canDealCard() {
         dealer.dealCard(player1);
         assertEquals(1, player1.getHand().size());
         assertEquals(51, dealer.getDeck().getCardDeck().size());
+    }
+
+    @Test
+    public void canDealCardToDealer() {
+        dealer.dealToSelf();
+        assertEquals(1, dealer.getHand().size());
     }
 
 

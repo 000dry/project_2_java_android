@@ -1,3 +1,5 @@
+package com.example.josephryan.cardgame;
+
 public class Card {
 
     Suit suit;

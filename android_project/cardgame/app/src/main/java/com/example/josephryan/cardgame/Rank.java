@@ -1,3 +1,5 @@
+package com.example.josephryan.cardgame;
+
 public enum Rank {
 
     ACE(1),

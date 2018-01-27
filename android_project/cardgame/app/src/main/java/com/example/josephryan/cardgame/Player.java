@@ -1,13 +1,12 @@
+package com.example.josephryan.cardgame;
+
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements IHandable{
 
-    ArrayList<Card> hand;
-    String name;
 
-    public Player(String name){
+    public Player(){
         this.hand = new ArrayList<>();
-        this.name = name;
     }
 
 

@@ -1,3 +1,5 @@
+package com.example.josephryan.cardgame;
+
 import org.junit.Before;
 import org.junit.Test;
 

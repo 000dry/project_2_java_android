@@ -1,15 +1,17 @@
+package com.example.josephryan.cardgame;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Dealer {
+public class Dealer implements IHandable{
 
     Deck deck;
-    String name;
     ArrayList<Card> hand;
+    ArrayList<Player> playersInGame;
 
-    public Dealer(String name, Deck deck){
-        this.name = name;
+    public Dealer(Deck deck){
         this.deck = deck;
         this.hand = new ArrayList<>();
+        this.playersInGame = new ArrayList<>();
     }
 
 
@@ -17,9 +19,30 @@ public class Dealer {
         return this.deck;
     }
 
+    public ArrayList<Card> getHand(){
+        return this.hand;
+    }
+
+    public void addPlayer(Player player) {
+        this.playersInGame.add(player);
+    }
+
+    public int getPlayerCount() {
+        return this.playersInGame.size();
+    }
+
     public void dealCard(Player player) {
         Card card = deck.removeCard();
         player.acceptCard(card);
+    }
+
+    public void dealToSelf() {
+        Card card = deck.removeCard();
+        this.acceptCard(card);
+    }
+
+    public void acceptCard(Card card){
+        this.hand.add(card);
     }
 
     public int checkCardValue(Player player) {
@@ -35,7 +58,5 @@ public class Dealer {
             return "The winner is player 2";
         }
     }
-
-
 }
 
