@@ -39,9 +39,11 @@ public class Deck {
     }
 
     public Card removeCard() {
-//        might need to add logic to check there are enough cards to deal
-//        either here, or in the dealer class....
+        if(this.cardDeck.size() == 0){
+            fillDeck();
+        }
         Card card = this.cardDeck.remove(0);
         return card;
+
     }
 }

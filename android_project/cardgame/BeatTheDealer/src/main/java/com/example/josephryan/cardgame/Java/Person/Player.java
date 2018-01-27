@@ -16,7 +16,7 @@ public class Player extends Person {
         for(int i = 0; i < this.getHand().size(); i++){
            String rank = this.getHand().get(i).getRank().name();
            String suit = this.getHand().get(i).getSuit().name();
-           cards[i] = "The " + suit + " of " + rank;
+           cards[i] = "The " + rank.toLowerCase() + " of " + suit.toLowerCase() + ". ";
         }
         return cards;
     }

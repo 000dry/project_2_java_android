@@ -12,9 +12,10 @@ import com.example.josephryan.cardgame.Java.DeckOfCards.Deck;
 import com.example.josephryan.cardgame.Java.Person.Player;
 import com.example.josephryan.cardgame.R;
 
+import java.util.Arrays;
+
 public class GameActivity extends AppCompatActivity {
 
-    Deck deck;
     Dealer dealer;
     Player player1;
     Button dealButton;
@@ -25,8 +26,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        deck = new Deck();
-        dealer = new Dealer(deck);
+        dealer = new Dealer(new Deck());
         player1 = new Player();
         dealer.addPlayer(player1);
         dealButton = findViewById(R.id.deal);
@@ -46,8 +46,15 @@ public class GameActivity extends AppCompatActivity {
         String dealerHasCards = Integer.toString(dealer.getHand().size());
         Log.d("Dealer number of cards:", dealerHasCards);
 
-        String cards = player1.getEachCard().toString();
-        playerCards.setText(cards);
+        String[] cards = player1.getEachCard();
+        StringBuilder builder = new StringBuilder();
+        for(String card : cards) {
+            builder.append(card);
+        }
+        String cardStrings = builder.toString();
+
+        playerCards.setText(cardStrings);
+        Log.d("Strings? ", cardStrings);
     }
 
 
