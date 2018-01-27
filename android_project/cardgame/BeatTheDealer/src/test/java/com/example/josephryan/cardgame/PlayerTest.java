@@ -25,7 +25,9 @@ public class PlayerTest {
 
     @Test
     public void canGetEachCard(){
-        assertEquals(player1.);
+        player1.acceptCard(card1);
+        player1.acceptCard(card2);
+        assertEquals(2, player1.getEachCard().length);
     }
 
 

@@ -1,6 +1,8 @@
 package com.example.josephryan.cardgame.Java.Person;
 
-import java.lang.reflect.Array;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Rank;
+import com.example.josephryan.cardgame.Java.DeckOfCards.Suit;
+
 
 public class Player extends Person {
 
@@ -9,8 +11,14 @@ public class Player extends Person {
     public Player(){
     }
 
-    public Array getEachCard(){
-
+    public String[] getEachCard(){
+        String[] cards = new String[this.getHand().size()];
+        for(int i = 0; i < this.getHand().size(); i++){
+           String rank = this.getHand().get(i).getRank().name();
+           String suit = this.getHand().get(i).getSuit().name();
+           cards[i] = "The " + suit + " of " + rank;
+        }
+        return cards;
     }
 
 
