@@ -48,9 +48,7 @@ public class GameActivity extends AppCompatActivity {
     public void onDealButtonClick(View button){
         if(startPoint == maxCardsDealt){
             button.setVisibility(View.INVISIBLE);
-//            resultButton.setVisibility(View.VISIBLE);
-            dealerCards.setVisibility(View.VISIBLE);
-            dealerView.setVisibility(View.VISIBLE);
+            resultButton.setVisibility(View.VISIBLE);
         } else {
             startPoint += 1;
         }
@@ -68,10 +66,14 @@ public class GameActivity extends AppCompatActivity {
         String dealerStrings = dealer.buildCardString(dealer);
         dealerCards.setText(dealerStrings);
         Log.d("DealerStrings?", dealerStrings);
+
+        Log.d("Clicks", startPoint.toString());
     }
 
-//    public void onClickResultButton(){
-//    }
+    public void onClickResultButton(View button){
+        dealerView.setVisibility(View.VISIBLE);
+        dealerCards.setVisibility(View.VISIBLE);
+    }
 
 
 
