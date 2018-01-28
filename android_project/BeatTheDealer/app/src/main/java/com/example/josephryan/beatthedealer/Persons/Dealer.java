@@ -69,17 +69,14 @@ public class Dealer extends Person{
         return value;
     }
 
-    public boolean resultAgainstDealer(Person player) {
+    public String getResult(Person player) {
         int dealerHand = this.checkValueOfHand(this);
         int playerHand = this.checkValueOfHand(player);
 
-        return playerHand > dealerHand;
-    }
-
-
-    public String getResult(Person player) {
-        if(this.resultAgainstDealer(player)) {
-            return "You beat the dealer";
+        if(playerHand > dealerHand){
+            return "You beat the dealer!";
+        } else if(playerHand == dealerHand){
+            return "It's a draw!";
         } else {
             return "The dealer wins";
         }
