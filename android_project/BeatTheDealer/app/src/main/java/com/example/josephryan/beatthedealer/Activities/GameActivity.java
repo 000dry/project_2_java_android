@@ -22,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
     TextView playerCards;
     TextView dealerCards;
     TextView dealerView;
+    TextView resultDisplay;
     Integer maxCardsDealt = 2;
     Integer startPoint = 1;
 
@@ -38,11 +39,7 @@ public class GameActivity extends AppCompatActivity {
         playerCards = findViewById(R.id.cards);
         dealerCards = findViewById(R.id.dealer_cards);
         dealerView = findViewById(R.id.dealer_reveal);
-
-        String checkPlayersInGame = Integer.toString(dealer.getPlayerCount());
-        Log.d("number of players: ", checkPlayersInGame);
-        String hasDeck = Integer.toString(dealer.getDeck().getCardDeck().size());
-        Log.d("full deck: ", hasDeck);
+        resultDisplay = findViewById(R.id.result_display);
     }
 
     public void onDealButtonClick(View button){
@@ -54,26 +51,22 @@ public class GameActivity extends AppCompatActivity {
         }
         dealer.dealForRound();
 
-        String playerHasCards = Integer.toString(player1.getHand().size());
-        Log.d("Player number of cards:", playerHasCards);
-        String dealerHasCards = Integer.toString(dealer.getHand().size());
-        Log.d("Dealer number of cards:", dealerHasCards);
-
         String cardStrings = player1.buildCardString(player1);
         playerCards.setText(cardStrings);
-        Log.d("Strings? ", cardStrings);
 
         String dealerStrings = dealer.buildCardString(dealer);
         dealerCards.setText(dealerStrings);
-        Log.d("DealerStrings?", dealerStrings);
-
-        Log.d("Clicks", startPoint.toString());
     }
 
     public void onClickResultButton(View button){
         dealerView.setVisibility(View.VISIBLE);
         dealerCards.setVisibility(View.VISIBLE);
-        button.setEnabled(false);
+        button.setVisibility(View.INVISIBLE);
+        resultDisplay.setVisibility(View.VISIBLE);
+
+        String result = dealer.getResult(player1);
+
+        resultDisplay.setText(result);
     }
 
 
