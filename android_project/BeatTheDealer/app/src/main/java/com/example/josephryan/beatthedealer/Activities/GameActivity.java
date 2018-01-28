@@ -18,10 +18,12 @@ public class GameActivity extends AppCompatActivity {
     Button dealButton;
     Button resultButton;
     Button newSessionButton;
+    Button keepPlayingButton;
     TextView playerCards;
     TextView dealerCards;
     TextView dealerView;
     TextView resultDisplay;
+
     Integer maxCardsDealt = 2;
     Integer startPoint = 1;
 
@@ -36,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
         dealButton = findViewById(R.id.deal);
         resultButton = findViewById(R.id.get_result);
         newSessionButton = findViewById(R.id.new_session);
+        keepPlayingButton = findViewById(R.id.keep_playing);
         playerCards = findViewById(R.id.cards);
         dealerCards = findViewById(R.id.dealer_cards);
         dealerView = findViewById(R.id.dealer_reveal);
@@ -63,6 +66,8 @@ public class GameActivity extends AppCompatActivity {
         dealerCards.setVisibility(View.VISIBLE);
         resultDisplay.setVisibility(View.VISIBLE);
         newSessionButton.setVisibility(View.VISIBLE);
+        keepPlayingButton.setVisibility(View.VISIBLE);
+
         button.setVisibility(View.INVISIBLE);
 
 
@@ -75,6 +80,20 @@ public class GameActivity extends AppCompatActivity {
         this.recreate();
     }
 
+    public void onClickKeepPlaying(View button){
+        dealer.emptyHand();
+        player1.emptyHand();
 
+        dealerView.setVisibility(View.INVISIBLE);
+        dealerCards.setVisibility(View.INVISIBLE);
+        resultDisplay.setVisibility(View.INVISIBLE);
+        newSessionButton.setVisibility(View.INVISIBLE);
+        keepPlayingButton.setVisibility(View.INVISIBLE);
+        dealButton.setVisibility(View.VISIBLE);
 
+        playerCards.setText("");
+        dealerCards.setText("");
+
+        startPoint -= 1;
+    }
 }

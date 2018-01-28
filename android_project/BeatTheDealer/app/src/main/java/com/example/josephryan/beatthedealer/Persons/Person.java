@@ -51,4 +51,10 @@ public abstract class Person {
         return cardStrings;
 
     }
+
+    public void emptyHand(){
+        for(int i = 0; i < this.getHand().size();){
+            this.getHand().remove(i);
+        }
+    }
 }
