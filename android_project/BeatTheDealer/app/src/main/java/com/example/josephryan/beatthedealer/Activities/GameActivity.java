@@ -17,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
     Player player1;
     Button dealButton;
     Button resultButton;
+    Button newSessionButton;
     TextView playerCards;
     TextView dealerCards;
     TextView dealerView;
@@ -34,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
         dealer.addPlayer(player1);
         dealButton = findViewById(R.id.deal);
         resultButton = findViewById(R.id.get_result);
+        newSessionButton = findViewById(R.id.new_session);
         playerCards = findViewById(R.id.cards);
         dealerCards = findViewById(R.id.dealer_cards);
         dealerView = findViewById(R.id.dealer_reveal);
@@ -59,12 +61,18 @@ public class GameActivity extends AppCompatActivity {
     public void onClickResultButton(View button){
         dealerView.setVisibility(View.VISIBLE);
         dealerCards.setVisibility(View.VISIBLE);
-        button.setVisibility(View.INVISIBLE);
         resultDisplay.setVisibility(View.VISIBLE);
+        newSessionButton.setVisibility(View.VISIBLE);
+        button.setVisibility(View.INVISIBLE);
+
 
         String result = dealer.getResult(player1);
 
         resultDisplay.setText(result);
+    }
+
+    public void onClickNewSession(View button){
+        this.recreate();
     }
 
 

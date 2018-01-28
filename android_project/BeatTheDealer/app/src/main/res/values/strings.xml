@@ -4,4 +4,6 @@
     <string name="show_hand">Show Hand</string>
     <string name="dealers_hand">Dealer\'s Hand:</string>
     <string name="your_cards">Your Cards:</string>
+    <string name="new_session">New Session</string>
+    <string name="keep_playing">Keep Playing</string>
 </resources>

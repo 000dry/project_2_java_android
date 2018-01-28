@@ -34,7 +34,7 @@ public abstract class Person {
             String rank = this.getHand().get(i).getRank().name();
             String suit = this.getHand().get(i).getSuit().name();
 
-            cards[i] = "The " + rank.toLowerCase() + " of " + suit.toLowerCase() + ". ";
+            cards[i] = "The " + rank.toLowerCase() + " of " + suit.toLowerCase() + ".\n";
         }
         return cards;
     }
