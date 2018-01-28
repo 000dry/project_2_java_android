@@ -18,6 +18,7 @@ public class GameActivity extends AppCompatActivity {
     Dealer dealer;
     Player player1;
     Button dealButton;
+    Button resultButton;
     TextView playerCards;
     TextView dealerCards;
     TextView dealerView;
@@ -33,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
         player1 = new Player();
         dealer.addPlayer(player1);
         dealButton = findViewById(R.id.deal);
+        resultButton = findViewById(R.id.get_result);
         playerCards = findViewById(R.id.cards);
         dealerCards = findViewById(R.id.dealer_cards);
         dealerView = findViewById(R.id.dealer_reveal);
@@ -46,6 +48,7 @@ public class GameActivity extends AppCompatActivity {
     public void onDealButtonClick(View button){
         if(startPoint == maxCardsDealt){
             button.setVisibility(View.INVISIBLE);
+//            resultButton.setVisibility(View.VISIBLE);
             dealerCards.setVisibility(View.VISIBLE);
             dealerView.setVisibility(View.VISIBLE);
         } else {
@@ -66,6 +69,9 @@ public class GameActivity extends AppCompatActivity {
         dealerCards.setText(dealerStrings);
         Log.d("DealerStrings?", dealerStrings);
     }
+
+//    public void onClickResultButton(){
+//    }
 
 
 
