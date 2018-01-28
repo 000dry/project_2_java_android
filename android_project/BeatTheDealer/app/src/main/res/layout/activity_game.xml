@@ -7,15 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.josephryan.beatthedealer.Activities.GameActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/deal"
         android:layout_width="wrap_content"
@@ -30,19 +21,72 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintVertical_bias="0.498" />
 
     <TextView
         android:id="@+id/cards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="8dp"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deal"
+        app:layout_constraintBottom_toBottomOf="@+id/your_cards"
+        app:layout_constraintEnd_toEndOf="@+id/your_cards"
+        app:layout_constraintStart_toStartOf="@+id/your_cards"
+        app:layout_constraintTop_toTopOf="@+id/your_cards"
+        app:layout_constraintVertical_bias="0.866"
         tools:text="cards" />
+
+    <TextView
+        android:id="@+id/your_cards"
+        android:layout_width="179dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:text="Your Cards:"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/deal"
+        app:layout_constraintStart_toStartOf="@+id/deal"
+        app:layout_constraintTop_toBottomOf="@+id/deal"
+        app:layout_constraintVertical_bias="0.833"
+        tools:text="Your Cards:" />
+
+    <TextView
+        android:id="@+id/dealer_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dealer_reveal"
+        app:layout_constraintEnd_toEndOf="@+id/dealer_reveal"
+        app:layout_constraintStart_toStartOf="@+id/dealer_reveal"
+        app:layout_constraintTop_toTopOf="@+id/dealer_reveal"
+        app:layout_constraintVertical_bias="0.86"
+        tools:text="DealersCards" />
+
+    <TextView
+        android:id="@+id/dealer_reveal"
+        android:layout_width="179dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Dealer's Cards:"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/deal"
+        app:layout_constraintEnd_toEndOf="@+id/deal"
+        app:layout_constraintStart_toStartOf="@+id/deal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074"
+        tools:text="Dealer's Cards:" />
 
 </android.support.constraint.ConstraintLayout>

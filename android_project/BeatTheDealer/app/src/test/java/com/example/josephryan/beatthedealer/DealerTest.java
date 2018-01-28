@@ -4,8 +4,8 @@ import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
-import com.example.josephryan.beatthedealer.Person.Dealer;
-import com.example.josephryan.beatthedealer.Person.Player;
+import com.example.josephryan.beatthedealer.Persons.Dealer;
+import com.example.josephryan.beatthedealer.Persons.Player;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -87,6 +87,11 @@ public class DealerTest {
         dealer.acceptCard(card1);
         dealer.acceptCard(card2);
         assertEquals(11, dealer.checkValueOfHand(dealer));
+   }
+
+   @Test
+   public void canGetEachCard(){
+
    }
 
    @Test

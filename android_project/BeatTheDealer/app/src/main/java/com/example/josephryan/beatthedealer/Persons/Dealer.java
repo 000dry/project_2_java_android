@@ -1,4 +1,4 @@
-package com.example.josephryan.beatthedealer.Person;
+package com.example.josephryan.beatthedealer.Persons;
 
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;

@@ -7,9 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.josephryan.beatthedealer.Person.Dealer;
+import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
-import com.example.josephryan.beatthedealer.Person.Player;
+import com.example.josephryan.beatthedealer.Persons.Person;
+import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
 public class GameActivity extends AppCompatActivity {
@@ -18,8 +19,10 @@ public class GameActivity extends AppCompatActivity {
     Player player1;
     Button dealButton;
     TextView playerCards;
-    Integer maxClicks = 2;
-    Integer currentClicks = 1;
+    TextView dealerCards;
+    TextView dealerView;
+    Integer maxCardsDealt = 2;
+    Integer startPoint = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class GameActivity extends AppCompatActivity {
         dealer.addPlayer(player1);
         dealButton = findViewById(R.id.deal);
         playerCards = findViewById(R.id.cards);
+        dealerCards = findViewById(R.id.dealer_cards);
+        dealerView = findViewById(R.id.dealer_reveal);
 
         String checkPlayersInGame = Integer.toString(dealer.getPlayerCount());
         Log.d("number of players: ", checkPlayersInGame);
@@ -39,10 +44,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onDealButtonClick(View button){
-        if(currentClicks == maxClicks){
-            button.setEnabled(false);
+        if(startPoint == maxCardsDealt){
+            button.setVisibility(View.INVISIBLE);
+            dealerCards.setVisibility(View.VISIBLE);
+            dealerView.setVisibility(View.VISIBLE);
         } else {
-            currentClicks += 1;
+            startPoint += 1;
         }
         dealer.dealForRound();
 
@@ -51,15 +58,15 @@ public class GameActivity extends AppCompatActivity {
         String dealerHasCards = Integer.toString(dealer.getHand().size());
         Log.d("Dealer number of cards:", dealerHasCards);
 
-        String[] cards = player1.getEachCard();
-
-        StringBuilder builder = new StringBuilder(); //join method was unavailable for level 15 API
-        for(String card : cards) {
-            builder.append(card);
-        }
-        String cardStrings = builder.toString();
-
+        String cardStrings = player1.buildCardString(player1);
         playerCards.setText(cardStrings);
         Log.d("Strings? ", cardStrings);
+
+        String dealerStrings = dealer.buildCardString(dealer);
+        dealerCards.setText(dealerStrings);
+        Log.d("DealerStrings?", dealerStrings);
     }
+
+
+
 }
