@@ -73,6 +73,7 @@ public class GameActivity extends AppCompatActivity {
     public void onClickResultButton(View button){
         dealerView.setVisibility(View.VISIBLE);
         dealerCards.setVisibility(View.VISIBLE);
+        button.setEnabled(false);
     }
 
 

@@ -77,12 +77,12 @@ public class Dealer extends Person{
     }
 
 
-//    public String compareCards(Player player1, Player player2) {
-//        if(checkCardValue(player1) > checkCardValue(player2)) {
-//            return "The winner is player 1";
-//        } else {
-//            return "The winner is player 2";
-//        }
-//    }
+    public String getResult(Person player) {
+        if(this.resultAgainstDealer(player)) {
+            return "You beat the dealer";
+        } else {
+            return "The dealer wins";
+        }
+    }
 }
 

@@ -90,15 +90,35 @@ public class DealerTest {
    }
 
    @Test
-   public void canGetEachCard(){
-
-   }
-
-   @Test
-    public void checkForResultAgainstDealer(){
+    public void checkForResultAgainstDealer__win(){
         dealer.addPlayer(player1);
         player1.acceptCard(card2); //7
         dealer.acceptCard(card1); //4
         assertEquals(true, dealer.resultAgainstDealer(player1));
    }
+
+    @Test
+    public void checkForResultAgainstDealer__lose(){
+        dealer.addPlayer(player1);
+        dealer.acceptCard(card2); //7
+        player1.acceptCard(card1); //4
+        assertEquals(false, dealer.resultAgainstDealer(player1));
+    }
+
+
+   @Test
+    public void canGetResultAsString__playerWins(){
+       dealer.addPlayer(player1);
+       player1.acceptCard(card2); //7
+       dealer.acceptCard(card1); //4
+        assertEquals("You beat the dealer", dealer.getResult(player1));
+   }
+
+    @Test
+    public void canGetResultAsString__playerLoses(){
+        dealer.addPlayer(player1);
+        dealer.acceptCard(card2); //7
+        player1.acceptCard(card1); //4
+        assertEquals("The dealer wins", dealer.getResult(player1));
+    }
 }
