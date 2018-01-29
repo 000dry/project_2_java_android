@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.josephryan.beatthedealer.Persons.Dealer;
@@ -28,6 +29,7 @@ public class GameActivity extends AppCompatActivity {
     TextView playerScore;
     TextView score1;
     TextView score2;
+    ImageView cardback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class GameActivity extends AppCompatActivity {
         playerScore = findViewById(R.id.player_score);
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
+        cardback = findViewById(R.id.card_back);
     }
 
     public void onDealButtonClick(View button){
@@ -73,6 +76,7 @@ public class GameActivity extends AppCompatActivity {
         newSessionButton.setVisibility(View.VISIBLE);
         keepPlayingButton.setVisibility(View.VISIBLE);
         button.setVisibility(View.INVISIBLE);
+        cardback.setVisibility(View.INVISIBLE);
 
         String result = dealer.getResult(player1);
         resultDisplay.setText(result);
