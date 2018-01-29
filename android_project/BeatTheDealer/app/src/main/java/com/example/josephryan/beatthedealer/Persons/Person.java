@@ -11,10 +11,12 @@ import java.util.ArrayList;
 public abstract class Person {
 
     int score;
+    boolean inGame;
     ArrayList<Card> hand;
 
-    public Person(int score){
+    public Person(int score, boolean inGame){
         this.score = score;
+        this.inGame = inGame;
         this.hand = new ArrayList<>();
         }
 
@@ -36,5 +38,17 @@ public abstract class Person {
         for(int i = 0; i < this.getHand().size();){
             this.getHand().remove(i);
         }
+    }
+
+    public boolean getInGame(){
+        return this.inGame;
+    }
+
+    public void setInGameToTrue(){
+        this.inGame = true;
+    }
+
+    public void inGameBooleanSwitch(){
+        this.inGame = this.getInGame() ? false : true;
     }
 }

@@ -7,4 +7,5 @@
     <string name="new_session">New Session</string>
     <string name="keep_playing">Keep Playing</string>
     <string name="score">Score:</string>
+    <string name="opt_out">Opt Out</string>
 </resources>

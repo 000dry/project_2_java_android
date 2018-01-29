@@ -20,9 +20,12 @@ public class GameActivity extends AppCompatActivity {
     Dealer dealer;
     Player player1;
     ImageResourceFinder suitImages;
-    Button resultButton;
+
+    ImageButton cardBack;
     ImageButton newSessionButton;
     ImageButton keepPlayingButton;
+    Button optOutButton;
+    Button resultButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -36,7 +39,6 @@ public class GameActivity extends AppCompatActivity {
     TextView dealerCard1Num2;
     TextView dealerCard2Num1;
     TextView dealerCard2Num2;
-    ImageButton cardBack;
     ImageView playerCard1;
     ImageView playerCard2;
     ImageView dealerCard1;
@@ -48,14 +50,16 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        dealer = new Dealer(0, new Deck());
+        dealer = new Dealer(0, true, new Deck());
         player1 = new Player(0, true);
         dealer.addPlayer(player1);
         suitImages = new ImageResourceFinder();
 
-        resultButton = findViewById(R.id.get_result);
+        cardBack = findViewById(R.id.card_back);
         newSessionButton = findViewById(R.id.new_session);
         keepPlayingButton = findViewById(R.id.keep_playing);
+        optOutButton = findViewById(R.id.opt_out);
+        resultButton = findViewById(R.id.get_result);
         resultDisplay = findViewById(R.id.result_display);
         dealerScore = findViewById(R.id.dealer_score);
         playerScore = findViewById(R.id.player_score);
@@ -69,7 +73,6 @@ public class GameActivity extends AppCompatActivity {
         dealerCard1Num2 = findViewById(R.id.dealer_card1_number2);
         dealerCard2Num1 = findViewById(R.id.dealer_card2_number1);
         dealerCard2Num2 = findViewById(R.id.dealer_card2_number2);
-        cardBack = findViewById(R.id.card_back);
         playerCard1 = findViewById(R.id.player_card1);
         playerCard2 = findViewById(R.id.player_card2);
         dealerCard1 = findViewById(R.id.dealer_card1);
@@ -77,12 +80,12 @@ public class GameActivity extends AppCompatActivity {
         resultsFrame = findViewById(R.id.result_frame);
     }
 
-
     public void onDealButtonClick(View button){
         dealer.dealForRound();
         dealer.dealForRound();
 
         button.setVisibility(View.INVISIBLE);
+        optOutButton.setVisibility(View.VISIBLE);
         resultButton.setVisibility(View.VISIBLE);
         playerCard1.setVisibility(View.VISIBLE);
         playerCard2.setVisibility(View.VISIBLE);
@@ -119,9 +122,10 @@ public class GameActivity extends AppCompatActivity {
         resultDisplay.setVisibility(View.VISIBLE);
         newSessionButton.setVisibility(View.VISIBLE);
         keepPlayingButton.setVisibility(View.VISIBLE);
-        button.setVisibility(View.INVISIBLE);
-        cardBack.setVisibility(View.INVISIBLE);
         resultsFrame.setVisibility(View.VISIBLE);
+        button.setVisibility(View.INVISIBLE);
+        optOutButton.setVisibility(View.INVISIBLE);
+        cardBack.setVisibility(View.INVISIBLE);
 
         String result = dealer.getResult(player1);
         resultDisplay.setText(result);
@@ -141,6 +145,11 @@ public class GameActivity extends AppCompatActivity {
         dealerCard2Num2.setText(card4);
     }
 
+    public void onClickOptOutButton(View button){
+        player1.inGameBooleanSwitch();
+        onClickResultButton(button);
+    }
+
     public void onClickNewSession(View button){
         this.recreate();
     }
@@ -148,6 +157,7 @@ public class GameActivity extends AppCompatActivity {
     public void onClickKeepPlaying(View button){
         dealer.emptyHand();
         player1.emptyHand();
+        player1.setInGameToTrue();
 
         resultDisplay.setVisibility(View.INVISIBLE);
         newSessionButton.setVisibility(View.INVISIBLE);

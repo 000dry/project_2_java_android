@@ -27,7 +27,7 @@ public class DealerTest {
         deck = new Deck();
         dealer = new Dealer(2, deck);
         player1 = new Player(0, true);
-        player2 = new Player(0, true);
+        player2 = new Player(2, true);
         card1 = new Card(Suit.CLUBS, Rank.FOUR);
         card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
         card3 = new Card(Suit.HEARTS, Rank.TWO);
@@ -108,9 +108,9 @@ public class DealerTest {
        player1.acceptCard(card2); //7
        dealer.acceptCard(card1); //4
        dealer.acceptCard(card1); //4
-       assertEquals("You beat the dealer!", dealer.getResult(player1));
+       assertEquals("Player wins", dealer.getResult(player1));
        assertEquals(2, player1.getScore());
-       assertEquals(0, dealer.getScore());
+       assertEquals(1, dealer.getScore());
    }
 
     @Test
@@ -120,7 +120,7 @@ public class DealerTest {
         dealer.acceptCard(card2); //7
         player1.acceptCard(card1); //4
         player1.acceptCard(card1); //4
-        assertEquals("The dealer wins!", dealer.getResult(player1));
+        assertEquals("Dealer wins", dealer.getResult(player1));
         assertEquals(0, player1.getScore());
         assertEquals(4, dealer.getScore());
     }
@@ -130,8 +130,19 @@ public class DealerTest {
         dealer.addPlayer(player1);
         dealer.acceptCard(card1); //4
         player1.acceptCard(card1); //4
-        assertEquals("It's a draw!", dealer.getResult(player1));
+        assertEquals("Draw", dealer.getResult(player1));
         assertEquals(1, player1.getScore());
         assertEquals(3, dealer.getScore());
+    }
+
+    @Test
+    public void canGetResultAsString_forfeit(){
+        dealer.addPlayer(player1);
+        dealer.acceptCard(card1); //4
+        player2.acceptCard(card1); //4
+        player2.inGameBooleanSwitch();
+        assertEquals("Forfeit", dealer.getResult(player2));
+        assertEquals(2, player2.getScore());
+        assertEquals(4, dealer.getScore());
     }
 }

@@ -22,6 +22,12 @@ public class PlayerTest {
     }
 
     @Test
+    public void canSetInGameToFalse(){
+        player1.setInGameToFalse();
+        assertEquals(false, player1.getInGame());
+    }
+
+    @Test
     public void canSwitchBoolean(){
         player1.inGameBooleanSwitch();
         assertEquals(false, player1.getInGame());

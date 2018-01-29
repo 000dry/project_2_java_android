@@ -10,8 +10,8 @@ public class Dealer extends Person{
     Deck deck;
     ArrayList<Player> playersInGame;
 
-    public Dealer(int score, Deck deck){
-        super(score);
+    public Dealer(int score, boolean inGame, Deck deck){
+        super(score, inGame);
         this.deck = deck;
         this.playersInGame = new ArrayList<>();
     }
@@ -79,18 +79,24 @@ public class Dealer extends Person{
         int dealerHand = this.checkValueOfHand(this);
         int playerHand = this.checkValueOfHand(player);
 
-        if(playerHand > dealerHand){
-            updateScore(player, 2);
-            updateScore(this, -2);
-            return "You beat the dealer!";
-        } else if(playerHand == dealerHand){
-            updateScore(this, 1);
-            updateScore(player, 1);
-            return "It's a draw!";
+        if(player.getInGame()){
+            if(playerHand > dealerHand){
+                updateScore(player, 2);
+                updateScore(this, -1);
+                return "Player wins";
+            } else if(playerHand == dealerHand){
+                updateScore(player, 1);
+                updateScore(this, 1);
+                return "Draw";
+            } else {
+                updateScore(player, -1);
+                updateScore(this, 2);
+                return "Dealer wins";
+            }
         } else {
-            updateScore(player, -2);
+            updateScore(player, 0);
             updateScore(this, 2);
-            return "The dealer wins!";
+            return "Forfeit";
         }
     }
 
