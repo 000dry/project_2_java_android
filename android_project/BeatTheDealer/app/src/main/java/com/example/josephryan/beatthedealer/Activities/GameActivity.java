@@ -15,6 +15,7 @@ public class GameActivity extends AppCompatActivity {
 
     Dealer dealer;
     Player player1;
+
     Button dealButton;
     Button resultButton;
     Button newSessionButton;
@@ -24,17 +25,15 @@ public class GameActivity extends AppCompatActivity {
     TextView dealerView;
     TextView resultDisplay;
 
-    Integer maxCardsDealt = 2;
-    Integer startPoint = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        dealer = new Dealer(new Deck());
-        player1 = new Player();
+        dealer = new Dealer(0, new Deck());
+        player1 = new Player(0);
         dealer.addPlayer(player1);
+
         dealButton = findViewById(R.id.deal);
         resultButton = findViewById(R.id.get_result);
         newSessionButton = findViewById(R.id.new_session);
@@ -46,13 +45,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onDealButtonClick(View button){
-        if(startPoint == maxCardsDealt){
-            button.setVisibility(View.INVISIBLE);
-            resultButton.setVisibility(View.VISIBLE);
-        } else {
-            startPoint += 1;
-        }
         dealer.dealForRound();
+        dealer.dealForRound();
+
+        button.setVisibility(View.INVISIBLE);
+        resultButton.setVisibility(View.VISIBLE);
 
         String cardStrings = player1.buildCardString(player1);
         playerCards.setText(cardStrings);
@@ -67,12 +64,9 @@ public class GameActivity extends AppCompatActivity {
         resultDisplay.setVisibility(View.VISIBLE);
         newSessionButton.setVisibility(View.VISIBLE);
         keepPlayingButton.setVisibility(View.VISIBLE);
-
         button.setVisibility(View.INVISIBLE);
 
-
         String result = dealer.getResult(player1);
-
         resultDisplay.setText(result);
     }
 
@@ -93,7 +87,5 @@ public class GameActivity extends AppCompatActivity {
 
         playerCards.setText("");
         dealerCards.setText("");
-
-        startPoint -= 1;
     }
 }

@@ -25,9 +25,9 @@ public class DealerTest {
     @Before
     public void before() {
         deck = new Deck();
-        dealer = new Dealer(deck);
-        player1 = new Player();
-        player2 = new Player();
+        dealer = new Dealer(2, deck);
+        player1 = new Player(0);
+        player2 = new Player(0);
         card1 = new Card(Suit.CLUBS, Rank.FOUR);
         card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
         card3 = new Card(Suit.HEARTS, Rank.TWO);
@@ -70,9 +70,9 @@ public class DealerTest {
     }
 
     @Test
-    public void canCheckPlayersCardValue(){
+    public void canCheckCardValue(){
         player1.acceptCard(card1);
-        assertEquals(4, dealer.checkCardValue(player1));
+        assertEquals(4, dealer.checkCardValue(player1, 0));
     }
 
    @Test
@@ -89,6 +89,18 @@ public class DealerTest {
         assertEquals(11, dealer.checkValueOfHand(dealer));
    }
 
+    @Test
+    public void canUpdateScore__positiveInt(){
+        dealer.updateScore(player1, 2);
+        assertEquals(2, player1.getScore());
+    }
+
+    @Test
+    public void canUpdateScore__negativeInt(){
+        dealer.updateScore(dealer, -2);
+        assertEquals(0, dealer.getScore());
+    }
+
    @Test
     public void canGetResultAsString__playerWins(){
        dealer.addPlayer(player1);
@@ -96,7 +108,9 @@ public class DealerTest {
        player1.acceptCard(card2); //7
        dealer.acceptCard(card1); //4
        dealer.acceptCard(card1); //4
-        assertEquals("You beat the dealer!", dealer.getResult(player1));
+       assertEquals("You beat the dealer!", dealer.getResult(player1));
+       assertEquals(2, player1.getScore());
+       assertEquals(0, dealer.getScore());
    }
 
     @Test
@@ -107,6 +121,8 @@ public class DealerTest {
         player1.acceptCard(card1); //4
         player1.acceptCard(card1); //4
         assertEquals("The dealer wins!", dealer.getResult(player1));
+        assertEquals(-2, player1.getScore());
+        assertEquals(4, dealer.getScore());
     }
 
     @Test
@@ -115,5 +131,9 @@ public class DealerTest {
         dealer.acceptCard(card1); //4
         player1.acceptCard(card1); //4
         assertEquals("It's a draw!", dealer.getResult(player1));
+        assertEquals(1, player1.getScore());
+        assertEquals(3, dealer.getScore());
     }
+
+
 }

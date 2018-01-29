@@ -28,10 +28,16 @@ public class PersonTest {
     @Before
     public void before(){
         deck = new Deck();
-        dealer = new Dealer(deck);
-        player = new Player();
+        dealer = new Dealer(1, deck);
+        player = new Player(1);
         card1 = new Card(Suit.SPADES, Rank.ACE);
         card2 = new Card(Suit.SPADES, Rank.EIGHT);
+    }
+
+    @Test
+    public void canGetScore(){
+        assertEquals(1, dealer.getScore());
+        assertEquals(1, player.getScore());
     }
 
     @Test

@@ -12,7 +12,6 @@ public class Deck {
         fillDeck();
     }
 
-
     public ArrayList<Card> getCardDeck() {
         return this.cardDeck;
     }
@@ -21,14 +20,12 @@ public class Deck {
         Suit[] allSuits = Suit.values();
         Rank[] allRanks = Rank.values();
 
-
-        for (Suit i: allSuits){
-            for (Rank j: allRanks) {
-                Card newCard = new Card(i, j);
+        for (Suit suit: allSuits){
+            for (Rank rank: allRanks) {
+                Card newCard = new Card(suit, rank);
                 this.cardDeck.add(newCard);
             }
         }
-
     }
 
     public void shuffleDeck() {
@@ -39,8 +36,8 @@ public class Deck {
         if(this.cardDeck.size() == 0){
             fillDeck();
         }
+
         Card card = this.cardDeck.remove(0);
         return card;
-
     }
 }

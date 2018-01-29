@@ -2,7 +2,6 @@ package com.example.josephryan.beatthedealer.Persons;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 
-
 import java.util.ArrayList;
 
 /**
@@ -11,11 +10,17 @@ import java.util.ArrayList;
 
 public abstract class Person {
 
+    int score;
     ArrayList<Card> hand;
 
-    public Person(){
+    public Person(int score){
+        this.score = score;
         this.hand = new ArrayList<>();
         }
+
+    public int getScore(){
+        return this.score;
+    }
 
     public ArrayList<Card> getHand() {
         return this.hand;
