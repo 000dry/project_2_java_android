@@ -29,7 +29,7 @@ public class PersonTest {
     public void before(){
         deck = new Deck();
         dealer = new Dealer(1, deck);
-        player = new Player(1);
+        player = new Player(1, true);
         card1 = new Card(Suit.SPADES, Rank.ACE);
         card2 = new Card(Suit.SPADES, Rank.EIGHT);
     }

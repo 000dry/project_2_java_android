@@ -21,8 +21,8 @@ public class GameActivity extends AppCompatActivity {
     Player player1;
     ImageResourceFinder suitImages;
     Button resultButton;
-    Button newSessionButton;
-    Button keepPlayingButton;
+    ImageButton newSessionButton;
+    ImageButton keepPlayingButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         dealer = new Dealer(0, new Deck());
-        player1 = new Player(0);
+        player1 = new Player(0, true);
         dealer.addPlayer(player1);
         suitImages = new ImageResourceFinder();
 

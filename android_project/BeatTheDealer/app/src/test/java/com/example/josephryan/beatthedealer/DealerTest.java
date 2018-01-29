@@ -26,8 +26,8 @@ public class DealerTest {
     public void before() {
         deck = new Deck();
         dealer = new Dealer(2, deck);
-        player1 = new Player(0);
-        player2 = new Player(0);
+        player1 = new Player(0, true);
+        player2 = new Player(0, true);
         card1 = new Card(Suit.CLUBS, Rank.FOUR);
         card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
         card3 = new Card(Suit.HEARTS, Rank.TWO);

@@ -7,21 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.josephryan.beatthedealer.Android.GameActivity">
 
-    <!--<Button-->
-        <!--android:id="@+id/deal"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:onClick="onDealButtonClick"-->
-        <!--android:text="@string/deal"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
     <Button
         android:id="@+id/get_result"
         android:layout_width="wrap_content"
@@ -77,47 +62,11 @@
         android:id="@+id/border"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="1dp"
         android:scaleType="fitXY"
         android:src="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
-
-    <Button
-        android:id="@+id/new_session"
-        android:layout_width="89dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickNewSession"
-        android:text="@string/new_session"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/deal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/keep_playing"
-        android:layout_width="89dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClickKeepPlaying"
-        android:text="@string/keep_playing"
-        android:textSize="10sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/border"
-        app:layout_constraintStart_toEndOf="@+id/deal"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -281,6 +230,7 @@
         android:layout_marginTop="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:rotation="180"
         app:layout_constraintBottom_toBottomOf="@+id/dealer_card1"
         app:layout_constraintEnd_toEndOf="@+id/dealer_card1"
         app:layout_constraintHorizontal_bias="0.879"
@@ -313,6 +263,7 @@
         android:layout_marginTop="8dp"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:rotation="180"
         app:layout_constraintBottom_toBottomOf="@+id/dealer_card2"
         app:layout_constraintEnd_toEndOf="@+id/dealer_card2"
         app:layout_constraintHorizontal_bias="0.862"
@@ -388,5 +339,43 @@
         app:layout_constraintStart_toStartOf="@+id/player_card2"
         app:layout_constraintTop_toTopOf="@+id/player_card2"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/new_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/pokerchip1"
+        android:visibility="invisible"
+        android:onClick="onClickNewSession"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/result_display"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toStartOf="@+id/border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <ImageButton
+        android:id="@+id/keep_playing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/pokerchip2"
+        android:visibility="invisible"
+        android:onClick="onClickKeepPlaying"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
 </android.support.constraint.ConstraintLayout>
