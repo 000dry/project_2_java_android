@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView playerCard2;
     ImageView dealerCard1;
     ImageView dealerCard2;
+    ImageView resultsFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class GameActivity extends AppCompatActivity {
         playerCard2 = findViewById(R.id.player_card2);
         dealerCard1 = findViewById(R.id.dealer_card1);
         dealerCard2 = findViewById(R.id.dealer_card2);
+        resultsFrame = findViewById(R.id.result_frame);
     }
 
 
@@ -109,6 +111,7 @@ public class GameActivity extends AppCompatActivity {
         keepPlayingButton.setVisibility(View.VISIBLE);
         button.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.INVISIBLE);
+        resultsFrame.setVisibility(View.VISIBLE);
 
         String result = dealer.getResult(player1);
         resultDisplay.setText(result);
@@ -142,6 +145,7 @@ public class GameActivity extends AppCompatActivity {
         dealerCard1.setVisibility(View.INVISIBLE);
         dealerCard2.setVisibility(View.INVISIBLE);
         dealerCard2.setImageResource(R.drawable.cardback);
+        resultsFrame.setVisibility(View.INVISIBLE);
 
         playerCard1Num1.setText("");
         playerCard1Num2.setText("");
