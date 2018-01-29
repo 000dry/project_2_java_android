@@ -1,6 +1,4 @@
-package com.example.josephryan.beatthedealer.Activities;
-
-import android.widget.ImageView;
+package com.example.josephryan.beatthedealer.Android;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.R;
@@ -21,8 +19,4 @@ public class ImageResourceFinder {
         images.put(Suit.DIAMONDS, R.drawable.diamondstemplate);
         return images;
     }
-
-//    ImageView img = new ImageView();
-
-//    img.setImageResource(images.get(Suit.CLUBS));
 }
