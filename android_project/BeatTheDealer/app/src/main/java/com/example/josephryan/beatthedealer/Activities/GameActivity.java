@@ -7,15 +7,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
+import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
+
 public class GameActivity extends AppCompatActivity {
 
     Dealer dealer;
     Player player1;
+    ImageResourceFinder suitImages;
 
     Button dealButton;
     Button resultButton;
@@ -30,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     TextView score1;
     TextView score2;
     ImageView cardback;
+    ImageView playerCard1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,9 @@ public class GameActivity extends AppCompatActivity {
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
         cardback = findViewById(R.id.card_back);
+        playerCard1 = findViewById(R.id.player_card1);
     }
+
 
     public void onDealButtonClick(View button){
         dealer.dealForRound();
@@ -67,6 +74,10 @@ public class GameActivity extends AppCompatActivity {
 
         String dealerStrings = dealer.buildCardString(dealer);
         dealerCards.setText(dealerStrings);
+
+        Suit suit1 = player1.getHand().get(0).getSuit();
+        int suitID = suitImages.cardIcons().get(suit1);
+        playerCard1.setImageResource(suitID);
     }
 
     public void onClickResultButton(View button){
@@ -102,6 +113,7 @@ public class GameActivity extends AppCompatActivity {
         newSessionButton.setVisibility(View.INVISIBLE);
         keepPlayingButton.setVisibility(View.INVISIBLE);
         dealButton.setVisibility(View.VISIBLE);
+        cardback.setVisibility(View.VISIBLE);
 
         playerCards.setText("");
         dealerCards.setText("");
