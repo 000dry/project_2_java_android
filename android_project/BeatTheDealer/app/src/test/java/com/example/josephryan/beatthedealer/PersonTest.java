@@ -57,23 +57,6 @@ public class PersonTest {
     }
 
     @Test
-    public void canGetEachCard(){
-        player.acceptCard(card1);
-        player.acceptCard(card2);
-        dealer.acceptCard(card1);
-        dealer.acceptCard(card2);
-        assertEquals(2, player.getEachCard().length);
-        assertEquals(2, dealer.getEachCard().length);
-    }
-
-    @Test
-    public void canGetCardStrings(){
-        player.acceptCard(card1);
-        player.acceptCard(card2);
-        assertEquals("The ace of spades.\nThe eight of spades.\n", player.buildCardString(player));
-    }
-
-    @Test
     public void canEmptyHand(){
         player.acceptCard(card1);
         player.acceptCard(card1);

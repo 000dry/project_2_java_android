@@ -32,31 +32,6 @@ public abstract class Person {
         }
     }
 
-    public String[] getEachCard(){
-        String[] cards = new String[this.getHand().size()];
-
-        for(int i = 0; i < this.getHand().size(); i++){
-            String rank = this.getHand().get(i).getRank().name();
-            String suit = this.getHand().get(i).getSuit().name();
-
-            cards[i] = "The " + rank.toLowerCase() + " of " + suit.toLowerCase() + ".\n";
-        }
-        return cards;
-    }
-
-    public String buildCardString(Person person){
-
-        String[] cards = person.getEachCard();
-
-        StringBuilder builder = new StringBuilder(); //join method was unavailable for level 15 API
-        for(String card : cards) {
-            builder.append(card);
-        }
-        String cardStrings = builder.toString();
-        return cardStrings;
-
-    }
-
     public void emptyHand(){
         for(int i = 0; i < this.getHand().size();){
             this.getHand().remove(i);

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,8 +20,6 @@ public class GameActivity extends AppCompatActivity {
     Dealer dealer;
     Player player1;
     ImageResourceFinder suitImages;
-
-    Button dealButton;
     Button resultButton;
     Button newSessionButton;
     Button keepPlayingButton;
@@ -33,7 +32,11 @@ public class GameActivity extends AppCompatActivity {
     TextView playerCard1Num2;
     TextView playerCard2Num1;
     TextView playerCard2Num2;
-    ImageView cardBack;
+    TextView dealerCard1Num1;
+    TextView dealerCard1Num2;
+    TextView dealerCard2Num1;
+    TextView dealerCard2Num2;
+    ImageButton cardBack;
     ImageView playerCard1;
     ImageView playerCard2;
     ImageView dealerCard1;
@@ -50,7 +53,6 @@ public class GameActivity extends AppCompatActivity {
         dealer.addPlayer(player1);
         suitImages = new ImageResourceFinder();
 
-        dealButton = findViewById(R.id.deal);
         resultButton = findViewById(R.id.get_result);
         newSessionButton = findViewById(R.id.new_session);
         keepPlayingButton = findViewById(R.id.keep_playing);
@@ -63,6 +65,10 @@ public class GameActivity extends AppCompatActivity {
         playerCard1Num2 = findViewById(R.id.player_card1_number2);
         playerCard2Num1 = findViewById(R.id.player_card2_number1);
         playerCard2Num2 = findViewById(R.id.player_card2_number2);
+        dealerCard1Num1 = findViewById(R.id.dealer_card1_number1);
+        dealerCard1Num2 = findViewById(R.id.dealer_card1_number2);
+        dealerCard2Num1 = findViewById(R.id.dealer_card2_number1);
+        dealerCard2Num2 = findViewById(R.id.dealer_card2_number2);
         cardBack = findViewById(R.id.card_back);
         playerCard1 = findViewById(R.id.player_card1);
         playerCard2 = findViewById(R.id.player_card2);
@@ -95,13 +101,17 @@ public class GameActivity extends AppCompatActivity {
         int suit3ID = suitImages.cardIcons().get(suit3); // *
         dealerCard1.setImageResource(suit3ID);           // *
 
-        String num1 = Integer.toString(player1.getHand().get(0).getRank().getValue()); // *
-        playerCard1Num1.setText(num1); // *
-        playerCard1Num2.setText(num1); // *
+        String card1 = Integer.toString(player1.getHand().get(0).getRank().getValue()); // *
+        playerCard1Num1.setText(card1); // *
+        playerCard1Num2.setText(card1); // *
 
-        String num2 = Integer.toString(player1.getHand().get(1).getRank().getValue()); // *
-        playerCard2Num1.setText(num2); // *
-        playerCard2Num2.setText(num2); // *
+        String card2 = Integer.toString(player1.getHand().get(1).getRank().getValue()); // *
+        playerCard2Num1.setText(card2); // *
+        playerCard2Num2.setText(card2); // *
+
+        String card3 = Integer.toString(dealer.getHand().get(0).getRank().getValue());
+        dealerCard1Num1.setText(card3);
+        dealerCard1Num2.setText(card3);
 
     }
 
@@ -125,6 +135,10 @@ public class GameActivity extends AppCompatActivity {
         Suit suit4 = dealer.getHand().get(1).getSuit();
         int suit4ID = suitImages.cardIcons().get(suit4);
         dealerCard2.setImageResource(suit4ID);
+
+        String card4 = Integer.toString(dealer.getHand().get(1).getRank().getValue());
+        dealerCard2Num1.setText(card4);
+        dealerCard2Num2.setText(card4);
     }
 
     public void onClickNewSession(View button){
@@ -138,7 +152,6 @@ public class GameActivity extends AppCompatActivity {
         resultDisplay.setVisibility(View.INVISIBLE);
         newSessionButton.setVisibility(View.INVISIBLE);
         keepPlayingButton.setVisibility(View.INVISIBLE);
-        dealButton.setVisibility(View.VISIBLE);
         cardBack.setVisibility(View.VISIBLE);
         playerCard1.setVisibility(View.INVISIBLE);
         playerCard2.setVisibility(View.INVISIBLE);
@@ -151,5 +164,9 @@ public class GameActivity extends AppCompatActivity {
         playerCard1Num2.setText("");
         playerCard2Num1.setText("");
         playerCard2Num2.setText("");
+        dealerCard1Num1.setText("");
+        dealerCard1Num2.setText("");
+        dealerCard2Num1.setText("");
+        dealerCard2Num2.setText("");
     }
 }
