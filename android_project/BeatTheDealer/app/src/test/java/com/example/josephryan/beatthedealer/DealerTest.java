@@ -121,7 +121,7 @@ public class DealerTest {
         player1.acceptCard(card1); //4
         player1.acceptCard(card1); //4
         assertEquals("The dealer wins!", dealer.getResult(player1));
-        assertEquals(-2, player1.getScore());
+        assertEquals(0, player1.getScore());
         assertEquals(4, dealer.getScore());
     }
 
@@ -134,6 +134,4 @@ public class DealerTest {
         assertEquals(1, player1.getScore());
         assertEquals(3, dealer.getScore());
     }
-
-
 }

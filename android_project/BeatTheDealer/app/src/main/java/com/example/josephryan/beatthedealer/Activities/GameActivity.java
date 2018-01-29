@@ -24,6 +24,10 @@ public class GameActivity extends AppCompatActivity {
     TextView dealerCards;
     TextView dealerView;
     TextView resultDisplay;
+    TextView dealerScore;
+    TextView playerScore;
+    TextView score1;
+    TextView score2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,10 @@ public class GameActivity extends AppCompatActivity {
         dealerCards = findViewById(R.id.dealer_cards);
         dealerView = findViewById(R.id.dealer_reveal);
         resultDisplay = findViewById(R.id.result_display);
+        dealerScore = findViewById(R.id.dealer_score);
+        playerScore = findViewById(R.id.player_score);
+        score1 = findViewById(R.id.score1);
+        score2 = findViewById(R.id.score2);
     }
 
     public void onDealButtonClick(View button){
@@ -68,6 +76,12 @@ public class GameActivity extends AppCompatActivity {
 
         String result = dealer.getResult(player1);
         resultDisplay.setText(result);
+
+        String points1 = Integer.toString(dealer.getScore());
+        dealerScore.setText(points1);
+
+        String points2 = Integer.toString(player1.getScore());
+        playerScore.setText(points2);
     }
 
     public void onClickNewSession(View button){

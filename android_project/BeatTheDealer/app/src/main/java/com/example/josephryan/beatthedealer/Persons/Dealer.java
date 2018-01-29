@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Dealer extends Person{
 
-    int score;
     Deck deck;
     ArrayList<Player> playersInGame;
 
@@ -70,9 +69,10 @@ public class Dealer extends Person{
     }
 
     public void updateScore(Person person, int points){
-        if(points > 0 && person.getScore() > 2) {
-            person.score += points;
+        if(points < 0 && person.getScore() < 2) {
+            return;
         }
+        person.score += points;
     }
 
     public String getResult(Person player) {
