@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
@@ -35,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     TextView score2;
     ImageView cardback;
     ImageView playerCard1;
+    ImageView playerCard2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
         dealer = new Dealer(0, new Deck());
         player1 = new Player(0);
         dealer.addPlayer(player1);
+        suitImages = new ImageResourceFinder();
 
         dealButton = findViewById(R.id.deal);
         resultButton = findViewById(R.id.get_result);
@@ -59,6 +60,7 @@ public class GameActivity extends AppCompatActivity {
         score2 = findViewById(R.id.score2);
         cardback = findViewById(R.id.card_back);
         playerCard1 = findViewById(R.id.player_card1);
+        playerCard2 = findViewById(R.id.player_card2);
     }
 
 
@@ -68,6 +70,8 @@ public class GameActivity extends AppCompatActivity {
 
         button.setVisibility(View.INVISIBLE);
         resultButton.setVisibility(View.VISIBLE);
+        playerCard1.setVisibility(View.VISIBLE);
+        playerCard2.setVisibility(View.VISIBLE);
 
         String cardStrings = player1.buildCardString(player1);
         playerCards.setText(cardStrings);
@@ -76,8 +80,13 @@ public class GameActivity extends AppCompatActivity {
         dealerCards.setText(dealerStrings);
 
         Suit suit1 = player1.getHand().get(0).getSuit();
-        int suitID = suitImages.cardIcons().get(suit1);
-        playerCard1.setImageResource(suitID);
+        int suit1ID = suitImages.cardIcons().get(suit1);
+        playerCard1.setImageResource(suit1ID);
+
+        Suit suit2 = player1.getHand().get(1).getSuit();
+        int suit2ID = suitImages.cardIcons().get(suit2);
+        playerCard2.setImageResource(suit2ID);
+
     }
 
     public void onClickResultButton(View button){
@@ -114,6 +123,8 @@ public class GameActivity extends AppCompatActivity {
         keepPlayingButton.setVisibility(View.INVISIBLE);
         dealButton.setVisibility(View.VISIBLE);
         cardback.setVisibility(View.VISIBLE);
+        playerCard1.setVisibility(View.INVISIBLE);
+        playerCard2.setVisibility(View.INVISIBLE);
 
         playerCards.setText("");
         dealerCards.setText("");
