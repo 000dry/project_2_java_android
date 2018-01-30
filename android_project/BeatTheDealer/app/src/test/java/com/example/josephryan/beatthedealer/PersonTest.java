@@ -47,9 +47,8 @@ public class PersonTest {
     }
 
     @Test
-    public void personCanAcceptCard__maximumOfTwoCards(){
+    public void personCanAcceptCard(){
         player.acceptCard(card1);
-        dealer.acceptCard(card1);
         dealer.acceptCard(card1);
         dealer.acceptCard(card1);
         assertEquals(1, player.getHand().size());

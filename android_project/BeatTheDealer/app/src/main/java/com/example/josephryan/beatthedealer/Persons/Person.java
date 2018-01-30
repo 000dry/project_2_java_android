@@ -29,9 +29,7 @@ public abstract class Person {
     }
 
     public void acceptCard(Card card) {
-        if(this.getHand().size() < 2) {
             this.hand.add(card);
-        }
     }
 
     public void emptyHand(){

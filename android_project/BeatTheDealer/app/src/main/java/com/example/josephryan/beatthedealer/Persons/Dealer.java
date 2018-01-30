@@ -2,7 +2,7 @@ package com.example.josephryan.beatthedealer.Persons;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
-import com.example.josephryan.beatthedealer.Game;
+import com.example.josephryan.beatthedealer.Games.Game;
 
 import java.util.ArrayList;
 

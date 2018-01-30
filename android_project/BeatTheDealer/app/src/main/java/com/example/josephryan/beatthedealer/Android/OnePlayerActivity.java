@@ -1,6 +1,5 @@
 package com.example.josephryan.beatthedealer.Android;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +10,17 @@ import android.widget.TextView;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
-import com.example.josephryan.beatthedealer.Game;
+import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
+import com.example.josephryan.beatthedealer.Games.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
-import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
 
 public class OnePlayerActivity extends AppCompatActivity {
 
-    Game game;
+    BeatTheDealer game;
     Dealer dealer;
     Player player1;
     RankHashMap ranks;
@@ -56,7 +55,7 @@ public class OnePlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        game = new Game();
+        game = new BeatTheDealer();
         dealer = new Dealer(0, true, new Deck());
         player1 = new Player(0, true);
         game.addPlayer(player1);
