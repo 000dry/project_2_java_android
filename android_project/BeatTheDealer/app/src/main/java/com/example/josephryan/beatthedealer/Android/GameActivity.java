@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
+import com.example.josephryan.beatthedealer.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.Persons.Player;
@@ -18,6 +19,7 @@ import com.example.josephryan.beatthedealer.R;
 
 public class GameActivity extends AppCompatActivity {
 
+    Game game;
     Dealer dealer;
     Player player1;
     RankHashMap ranks;
@@ -52,9 +54,11 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        game = new Game();
         dealer = new Dealer(0, true, new Deck());
         player1 = new Player(0, true);
-        dealer.addPlayer(player1);
+        game.addPlayer(player1);
+        game.addPlayer(dealer);
         ranks = new RankHashMap();
         suitImages = new ImageResourceFinder();
 
@@ -84,8 +88,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onDealButtonClick(View button){
-        dealer.dealForRound();
-        dealer.dealForRound();
+        dealer.dealForRound(game);
+        dealer.dealForRound(game);
 
         button.setVisibility(View.INVISIBLE);
         optOutButton.setVisibility(View.VISIBLE);
@@ -130,7 +134,7 @@ public class GameActivity extends AppCompatActivity {
         optOutButton.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.INVISIBLE);
 
-        String result = dealer.getResult(player1);
+        String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
 
         String points1 = Integer.toString(dealer.getScore());

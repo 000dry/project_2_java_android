@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public abstract class Person {
 
-    int score;
+    public int score;
     boolean inGame;
     ArrayList<Card> hand;
 

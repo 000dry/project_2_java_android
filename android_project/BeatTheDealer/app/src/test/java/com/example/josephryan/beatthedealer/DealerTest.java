@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class DealerTest {
 
+    Game game;
     Deck deck;
     Dealer dealer;
     Player player1;
@@ -24,6 +25,7 @@ public class DealerTest {
 
     @Before
     public void before() {
+        game = new Game();
         deck = new Deck();
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
@@ -31,6 +33,7 @@ public class DealerTest {
         card1 = new Card(Suit.CLUBS, Rank.FOUR);
         card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
         card3 = new Card(Suit.HEARTS, Rank.TWO);
+
     }
 
     @Test
@@ -38,12 +41,6 @@ public class DealerTest {
         assertEquals(52, dealer.getDeck().getCardDeck().size());
     }
 
-    @Test
-    public void canAddPlayerToGame(){
-        dealer.addPlayer(player1);
-        dealer.addPlayer(player2);
-        assertEquals(2, dealer.getPlayerCount());
-    }
 
     @Test
     public void canDealCard() {
@@ -53,96 +50,14 @@ public class DealerTest {
     }
 
     @Test
-    public void canDealCardToDealer() {
-        dealer.dealToSelf();
-        assertEquals(1, dealer.getHand().size());
-    }
-
-    @Test
     public void canDealARound(){
-        dealer.addPlayer(player1);
-        dealer.addPlayer(player2);
-        dealer.dealForRound();
-        dealer.dealForRound();
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        game.addPlayer(dealer);
+        dealer.dealForRound(game);
+        dealer.dealForRound(game);
         assertEquals(2, dealer.getHand().size());
         assertEquals(2, player1.getHand().size());
         assertEquals(2, player2.getHand().size());
-    }
-
-    @Test
-    public void canCheckCardValue(){
-        player1.acceptCard(card1);
-        assertEquals(4, dealer.checkCardValue(player1, 0));
-    }
-
-   @Test
-    public void canGetValueOfAHand__Player(){
-        player1.acceptCard(card1);
-        player1.acceptCard(card2);
-        assertEquals(11, dealer.checkValueOfHand(player1));
-   }
-
-   @Test
-    public void canCheckValueOfAHand__Dealer(){
-        dealer.acceptCard(card1);
-        dealer.acceptCard(card2);
-        assertEquals(11, dealer.checkValueOfHand(dealer));
-   }
-
-    @Test
-    public void canUpdateScore__positiveInt(){
-        dealer.updateScore(player1, 2);
-        assertEquals(2, player1.getScore());
-    }
-
-    @Test
-    public void canUpdateScore__negativeInt(){
-        dealer.updateScore(dealer, -2);
-        assertEquals(0, dealer.getScore());
-    }
-
-   @Test
-    public void canGetResultAsString__playerWins(){
-       dealer.addPlayer(player1);
-       player1.acceptCard(card2); //7
-       player1.acceptCard(card2); //7
-       dealer.acceptCard(card1); //4
-       dealer.acceptCard(card1); //4
-       assertEquals("Player wins", dealer.getResult(player1));
-       assertEquals(2, player1.getScore());
-       assertEquals(1, dealer.getScore());
-   }
-
-    @Test
-    public void canGetResultAsString__playerLoses(){
-        dealer.addPlayer(player1);
-        dealer.acceptCard(card2); //7
-        dealer.acceptCard(card2); //7
-        player1.acceptCard(card1); //4
-        player1.acceptCard(card1); //4
-        assertEquals("Dealer wins", dealer.getResult(player1));
-        assertEquals(0, player1.getScore());
-        assertEquals(4, dealer.getScore());
-    }
-
-    @Test
-    public void canGetResultAsString__draw(){
-        dealer.addPlayer(player1);
-        dealer.acceptCard(card1); //4
-        player1.acceptCard(card1); //4
-        assertEquals("Draw", dealer.getResult(player1));
-        assertEquals(1, player1.getScore());
-        assertEquals(3, dealer.getScore());
-    }
-
-    @Test
-    public void canGetResultAsString_forfeit(){
-        dealer.addPlayer(player1);
-        dealer.acceptCard(card1); //4
-        player2.acceptCard(card1); //4
-        player2.inGameBooleanSwitch();
-        assertEquals("Forfeit", dealer.getResult(player2));
-        assertEquals(2, player2.getScore());
-        assertEquals(4, dealer.getScore());
     }
 }
