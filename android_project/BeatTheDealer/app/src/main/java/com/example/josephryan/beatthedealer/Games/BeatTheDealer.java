@@ -10,8 +10,8 @@ import com.example.josephryan.beatthedealer.Persons.Player;
 public class BeatTheDealer extends Game {
 
     public String getResult(Player player, Dealer dealer) {
-        int dealerHand = this.checkValueOfHand(dealer);
-        int playerHand = this.checkValueOfHand(player);
+        int dealerHand = dealer.checkValueOfHand();
+        int playerHand = player.checkValueOfHand();
 
         if(player.getInGame()){
             if(playerHand > dealerHand){

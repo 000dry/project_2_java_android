@@ -4,9 +4,7 @@ import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
-import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
 import com.example.josephryan.beatthedealer.Games.Blackjack;
-import com.example.josephryan.beatthedealer.Games.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.Persons.Player;
 
@@ -51,7 +49,7 @@ public class BlackjackTest {
         player1.acceptCard(card1);
         player1.acceptCard(card1);
         player1.acceptCard(card1);
-        assertEquals(20, blackjack.checkValueOfHand(player1));
+        assertEquals(20, player1.checkValueOfHand());
     }
 
     @Test
@@ -61,5 +59,7 @@ public class BlackjackTest {
         dealer.acceptCard(card3);
         dealer.acceptCard(card4);
         assertEquals("Player Wins", blackjack.getResult(player1, dealer));
+        assertEquals(2, player1.getScore());
     }
+
 }

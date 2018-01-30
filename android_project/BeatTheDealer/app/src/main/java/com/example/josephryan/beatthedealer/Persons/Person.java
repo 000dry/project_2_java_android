@@ -38,15 +38,19 @@ public abstract class Person {
         }
     }
 
-    public boolean getInGame(){
-        return this.inGame;
+    public int checkCardValue(int index) {
+        Card hand = this.getHand().get(index);
+        int value = hand.getRank().getValue();
+
+        return value;
     }
 
-    public void setInGameToTrue(){
-        this.inGame = true;
-    }
+    public int checkValueOfHand() {
+        int value = 0;
 
-    public void inGameBooleanSwitch(){
-        this.inGame = this.getInGame() ? false : true;
+        for(int i = 0; i < this.getHand().size(); i++){
+            value += this.checkCardValue(i);
+        }
+        return value;
     }
 }

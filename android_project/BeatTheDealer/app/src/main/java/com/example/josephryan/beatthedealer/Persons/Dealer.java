@@ -23,7 +23,6 @@ public class Dealer extends Person{
         return this.hand;
     }
 
-
     public void dealCard(Person person) {
         Card card = deck.removeCard();
         person.acceptCard(card);
@@ -38,5 +37,13 @@ public class Dealer extends Person{
         }
     }
 
+    public void shouldDrawCard() {
+        int dealerHand = this.checkValueOfHand();
+
+        if(dealerHand < 13){
+            Card card = deck.removeCard();
+            this.acceptCard(card);
+        }
+    }
 }
 

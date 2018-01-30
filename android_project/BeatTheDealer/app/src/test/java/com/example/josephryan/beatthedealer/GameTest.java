@@ -51,21 +51,21 @@ public class GameTest {
     @Test
     public void canCheckCardValue(){
         player1.acceptCard(card1);
-        assertEquals(4, game.checkCardValue(player1, 0));
+        assertEquals(4, player1.checkCardValue(0));
     }
 
     @Test
     public void canGetValueOfAHand__Player(){
         player1.acceptCard(card1);
         player1.acceptCard(card2);
-        assertEquals(11, game.checkValueOfHand(player1));
+        assertEquals(11, player1.checkValueOfHand());
     }
 
     @Test
     public void canCheckValueOfAHand__Dealer(){
         dealer.acceptCard(card1);
         dealer.acceptCard(card2);
-        assertEquals(11, game.checkValueOfHand(dealer));
+        assertEquals(11, dealer.checkValueOfHand());
     }
 
     @Test

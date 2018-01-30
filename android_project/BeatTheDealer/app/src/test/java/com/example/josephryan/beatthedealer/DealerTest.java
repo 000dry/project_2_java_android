@@ -1,8 +1,11 @@
 package com.example.josephryan.beatthedealer;
 
+import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
+import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
+import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
-import com.example.josephryan.beatthedealer.Games.Game;
+import com.example.josephryan.beatthedealer.Games.Blackjack;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.Persons.Player;
 
@@ -13,19 +16,27 @@ import static org.junit.Assert.assertEquals;
 
 public class DealerTest {
 
-    Game game;
+    BeatTheDealer beatTheDealer;
+    Blackjack blackjack;
     Deck deck;
     Dealer dealer;
     Player player1;
     Player player2;
+    Card card1;
+    Card card2;
+    Card card3;
 
     @Before
     public void before() {
-        game = new BeatTheDealer();
+        beatTheDealer = new BeatTheDealer();
+        blackjack = new Blackjack();
         deck = new Deck();
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
         player2 = new Player(2, true);
+        card1 = new Card(Suit.CLUBS, Rank.FOUR);
+        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
+        card3 = new Card(Suit.HEARTS, Rank.TWO);
     }
 
     @Test
@@ -43,13 +54,21 @@ public class DealerTest {
 
     @Test
     public void canDealARound(){
-        game.addPlayer(player1);
-        game.addPlayer(player2);
-        game.addPlayer(dealer);
-        dealer.dealForRound(game);
-        dealer.dealForRound(game);
+        beatTheDealer.addPlayer(player1);
+        beatTheDealer.addPlayer(player2);
+        beatTheDealer.addPlayer(dealer);
+        dealer.dealForRound(beatTheDealer);
+        dealer.dealForRound(beatTheDealer);
         assertEquals(2, dealer.getHand().size());
         assertEquals(2, player1.getHand().size());
         assertEquals(2, player2.getHand().size());
+    }
+
+    @Test
+    public void dealerTakesExtraCardIfHandValueUnder13(){
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card3);
+        dealer.shouldDrawCard();
+        assertEquals(3, dealer.getHand().size());
     }
 }

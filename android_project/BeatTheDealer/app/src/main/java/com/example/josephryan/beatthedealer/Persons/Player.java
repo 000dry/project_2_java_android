@@ -8,4 +8,16 @@ public class Player extends Person {
         super(score, inGame);
     }
 
+    public boolean getInGame(){
+        return this.inGame;
+    }
+
+    public void setInGameToTrue(){
+        this.inGame = true;
+    }
+
+    public void inGameBooleanSwitch(){
+        this.inGame = this.getInGame() ? false : true;
+    }
+
 }

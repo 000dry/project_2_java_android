@@ -1,6 +1,5 @@
 package com.example.josephryan.beatthedealer.Games;
 
-import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.Persons.Person;
 
 import java.util.ArrayList;
@@ -27,22 +26,6 @@ public abstract class Game {
 
     public int getPlayerCount() {
         return this.playersInGame.size();
-    }
-
-    public int checkCardValue(Person person, int index) {
-        Card hand = person.getHand().get(index);
-        int value = hand.getRank().getValue();
-
-        return value;
-    }
-
-    public int checkValueOfHand(Person person) {
-        int value = 0;
-
-        for(int i = 0; i < person.getHand().size(); i++){
-            value += this.checkCardValue(person, i);
-        }
-        return value;
     }
 
     public void updateScore(Person person, int points){
