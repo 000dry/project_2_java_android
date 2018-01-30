@@ -1,5 +1,6 @@
 package com.example.josephryan.beatthedealer.Android;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,12 @@ import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
+import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
 
-public class GameActivity extends AppCompatActivity {
+public class OnePlayerActivity extends AppCompatActivity {
 
     Game game;
     Dealer dealer;
@@ -87,17 +89,22 @@ public class GameActivity extends AppCompatActivity {
         resultsFrame = findViewById(R.id.result_frame);
     }
 
+//    public void cardImageSetter(ImageView image){
+//        for(int i = 0; i < game.getPlayerCount(); i++) {
+//            Person player = game.getPlayer(i);
+//            for(int j = 0; j < player.getHand().size(); j++){
+//                Suit suit = player.getHand().get(j).getSuit();
+//                int suitID = suitImages.cardIcons().get(suit);
+//
+//            }
+//        }
+//        image.setImageResource(suitID);
+//    }
+
     public void onDealButtonClick(View button){
         dealer.dealForRound(game);
         dealer.dealForRound(game);
-
-        button.setVisibility(View.INVISIBLE);
-        optOutButton.setVisibility(View.VISIBLE);
-        resultButton.setVisibility(View.VISIBLE);
-        playerCard1.setVisibility(View.VISIBLE);
-        playerCard2.setVisibility(View.VISIBLE);
-        dealerCard1.setVisibility(View.VISIBLE);
-        dealerCard2.setVisibility(View.VISIBLE);
+        changeVisibilityOnClickDealButton();
 
         Suit suit1 = player1.getHand().get(0).getSuit(); //write all this into separate method
         int suit1ID = suitImages.cardIcons().get(suit1); // *
@@ -126,13 +133,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onClickResultButton(View button){
-        resultDisplay.setVisibility(View.VISIBLE);
-        newSessionButton.setVisibility(View.VISIBLE);
-        keepPlayingButton.setVisibility(View.VISIBLE);
-        resultsFrame.setVisibility(View.VISIBLE);
-        button.setVisibility(View.INVISIBLE);
-        optOutButton.setVisibility(View.INVISIBLE);
-        cardBack.setVisibility(View.INVISIBLE);
+        changeVisibilityOnClickResult();
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
@@ -166,7 +167,39 @@ public class GameActivity extends AppCompatActivity {
         dealer.emptyHand();
         player1.emptyHand();
         player1.setInGameToTrue();
+        changeVisibilityOnClickKeepPlaying();
 
+        playerCard1Num1.setText("");
+        playerCard1Num2.setText("");
+        playerCard2Num1.setText("");
+        playerCard2Num2.setText("");
+        dealerCard1Num1.setText("");
+        dealerCard1Num2.setText("");
+        dealerCard2Num1.setText("");
+        dealerCard2Num2.setText("");
+    }
+
+    private void changeVisibilityOnClickDealButton(){
+        cardBack.setVisibility(View.INVISIBLE);
+        optOutButton.setVisibility(View.VISIBLE);
+        resultButton.setVisibility(View.VISIBLE);
+        playerCard1.setVisibility(View.VISIBLE);
+        playerCard2.setVisibility(View.VISIBLE);
+        dealerCard1.setVisibility(View.VISIBLE);
+        dealerCard2.setVisibility(View.VISIBLE);
+    }
+
+    private void changeVisibilityOnClickResult() {
+        resultDisplay.setVisibility(View.VISIBLE);
+        newSessionButton.setVisibility(View.VISIBLE);
+        keepPlayingButton.setVisibility(View.VISIBLE);
+        resultsFrame.setVisibility(View.VISIBLE);
+        resultButton.setVisibility(View.INVISIBLE);
+        optOutButton.setVisibility(View.INVISIBLE);
+        cardBack.setVisibility(View.INVISIBLE);
+    }
+
+    public void changeVisibilityOnClickKeepPlaying(){
         resultDisplay.setVisibility(View.INVISIBLE);
         newSessionButton.setVisibility(View.INVISIBLE);
         keepPlayingButton.setVisibility(View.INVISIBLE);
@@ -177,14 +210,5 @@ public class GameActivity extends AppCompatActivity {
         dealerCard2.setVisibility(View.INVISIBLE);
         dealerCard2.setImageResource(R.drawable.cardback);
         resultsFrame.setVisibility(View.INVISIBLE);
-
-        playerCard1Num1.setText("");
-        playerCard1Num2.setText("");
-        playerCard2Num1.setText("");
-        playerCard2Num2.setText("");
-        dealerCard1Num1.setText("");
-        dealerCard1Num2.setText("");
-        dealerCard2Num1.setText("");
-        dealerCard2Num2.setText("");
     }
 }

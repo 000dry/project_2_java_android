@@ -21,7 +21,7 @@ public class RankHashMap {
         ranks.put(Rank.NINE, "9");
         ranks.put(Rank.TEN, "10");
         ranks.put(Rank.JACK, "J");
-        ranks.put(Rank.SEVEN, "Q");
+        ranks.put(Rank.QUEEN, "Q");
         ranks.put(Rank.KING, "K");
         return ranks;
     }

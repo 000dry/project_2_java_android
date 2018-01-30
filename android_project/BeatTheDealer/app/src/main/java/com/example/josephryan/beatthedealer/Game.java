@@ -35,7 +35,6 @@ public class Game {
         Card hand = person.getHand().get(index);
         int value = hand.getRank().getValue();
 
-
         return value;
     }
 
@@ -63,7 +62,7 @@ public class Game {
             if(playerHand > dealerHand){
                 updateScore(player, 2);
                 updateScore(dealer, -1);
-                return "Player wins";
+                return "Player Wins";
             } else if(playerHand == dealerHand){
                 updateScore(player, 1);
                 updateScore(dealer, 1);
@@ -71,7 +70,7 @@ public class Game {
             } else {
                 updateScore(player, -1);
                 updateScore(dealer, 2);
-                return "Dealer wins";
+                return "Dealer Wins";
             }
         } else {
             updateScore(player, 0);

@@ -85,7 +85,7 @@ public class GameTest {
         player1.acceptCard(card2); //7
         dealer.acceptCard(card1); //4
         dealer.acceptCard(card1); //4
-        assertEquals("Player wins", game.getResult(player1, dealer));
+        assertEquals("Player Wins", game.getResult(player1, dealer));
         assertEquals(2, player1.getScore());
         assertEquals(1, dealer.getScore());
     }
@@ -97,7 +97,7 @@ public class GameTest {
         dealer.acceptCard(card2); //7
         player1.acceptCard(card1); //4
         player1.acceptCard(card1); //4
-        assertEquals("Dealer wins", game.getResult(player1, dealer));
+        assertEquals("Dealer Wins", game.getResult(player1, dealer));
         assertEquals(0, player1.getScore());
         assertEquals(4, dealer.getScore());
     }
@@ -121,5 +121,17 @@ public class GameTest {
         assertEquals("Forfeit", game.getResult(player2, dealer));
         assertEquals(2, player2.getScore());
         assertEquals(4, dealer.getScore());
+    }
+
+    @Test
+    public void canGetResultFromTwoPlayersVDealer(){
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        game.addPlayer(dealer);
+        player1.acceptCard(card1); //4
+        player2.acceptCard(card2); //7
+        dealer.acceptCard(card3); //2
+        assertEquals("Player Wins", game.getResult(player1, dealer));
+        assertEquals("Player Wins", game.getResult(player2, dealer));
     }
 }

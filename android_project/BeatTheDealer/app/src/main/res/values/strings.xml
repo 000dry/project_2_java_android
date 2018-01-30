@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BeatTheDealer</string>
+    <string name="app_name">Blackjack</string>
     <string name="deal">Deal</string>
     <string name="show_hand">Show Hand</string>
     <string name="dealers_hand">Dealer\'s Hand:</string>
