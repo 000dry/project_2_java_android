@@ -10,10 +10,12 @@ import static org.junit.Assert.assertEquals;
 public class PlayerTest {
 
     Player player1;
+    Player player2;
 
     @Before
     public void before(){
         player1 = new Player(0, true);
+        player2 = new Player(0, false);
     }
 
     @Test
@@ -22,9 +24,9 @@ public class PlayerTest {
     }
 
     @Test
-    public void canSetInGameToFalse(){
-        player1.setInGameToFalse();
-        assertEquals(false, player1.getInGame());
+    public void canSetInGameToTrue(){
+        player2.setInGameToTrue();
+        assertEquals(true, player2.getInGame());
     }
 
     @Test

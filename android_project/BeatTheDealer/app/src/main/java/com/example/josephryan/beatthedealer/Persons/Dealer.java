@@ -69,7 +69,7 @@ public class Dealer extends Person{
     }
 
     public void updateScore(Person person, int points){
-        if(points < 0 && person.getScore() < 2) {
+        if(points < 0 && person.getScore() == 0) {
             return;
         }
         person.score += points;

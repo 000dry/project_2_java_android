@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
@@ -19,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
 
     Dealer dealer;
     Player player1;
+    RankHashMap ranks;
     ImageResourceFinder suitImages;
 
     ImageButton cardBack;
@@ -53,6 +55,7 @@ public class GameActivity extends AppCompatActivity {
         dealer = new Dealer(0, true, new Deck());
         player1 = new Player(0, true);
         dealer.addPlayer(player1);
+        ranks = new RankHashMap();
         suitImages = new ImageResourceFinder();
 
         cardBack = findViewById(R.id.card_back);
@@ -104,15 +107,15 @@ public class GameActivity extends AppCompatActivity {
         int suit3ID = suitImages.cardIcons().get(suit3); // *
         dealerCard1.setImageResource(suit3ID);           // *
 
-        String card1 = Integer.toString(player1.getHand().get(0).getRank().getValue()); // *
+        String card1 = ranks.rankStrings().get(player1.getHand().get(0).getRank()); // *
         playerCard1Num1.setText(card1); // *
         playerCard1Num2.setText(card1); // *
 
-        String card2 = Integer.toString(player1.getHand().get(1).getRank().getValue()); // *
+        String card2 = ranks.rankStrings().get(player1.getHand().get(1).getRank()); // *
         playerCard2Num1.setText(card2); // *
         playerCard2Num2.setText(card2); // *
 
-        String card3 = Integer.toString(dealer.getHand().get(0).getRank().getValue());
+        String card3 = ranks.rankStrings().get(dealer.getHand().get(0).getRank());
         dealerCard1Num1.setText(card3);
         dealerCard1Num2.setText(card3);
 
@@ -140,7 +143,7 @@ public class GameActivity extends AppCompatActivity {
         int suit4ID = suitImages.cardIcons().get(suit4);
         dealerCard2.setImageResource(suit4ID);
 
-        String card4 = Integer.toString(dealer.getHand().get(1).getRank().getValue());
+        String card4 = ranks.rankStrings().get(dealer.getHand().get(1).getRank());
         dealerCard2Num1.setText(card4);
         dealerCard2Num2.setText(card4);
     }
@@ -148,6 +151,7 @@ public class GameActivity extends AppCompatActivity {
     public void onClickOptOutButton(View button){
         player1.inGameBooleanSwitch();
         onClickResultButton(button);
+        resultButton.setVisibility(View.INVISIBLE);
     }
 
     public void onClickNewSession(View button){
