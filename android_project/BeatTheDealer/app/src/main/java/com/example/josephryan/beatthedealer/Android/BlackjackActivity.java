@@ -1,5 +1,6 @@
 package com.example.josephryan.beatthedealer.Android;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -111,6 +112,9 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickHitButton(View button){
         dealer.dealCard(player1, game);
+
+        String value = Integer.toString(player1.checkValueOfHand());
+        Log.d("Player: ", value);
     }
 
     public void onClickStickButton(View button){
@@ -121,10 +125,17 @@ public class BlackjackActivity extends AppCompatActivity {
         dealer.shouldDrawCard(game);
         resultButton.setVisibility(View.VISIBLE);
         button.setVisibility(View.INVISIBLE);
+
+        String value2 = Integer.toString(dealer.checkValueOfHand());
+        Log.d("Dealer: ", value2);
     }
 
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
+
+        ImageView newCard = new ImageView(this);
+        ConstraintLayout cl = new ConstraintLayout(this);
+
         setCard(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
 
         String result = game.getResult(player1, dealer);
@@ -142,7 +153,7 @@ public class BlackjackActivity extends AppCompatActivity {
         Log.d("Dealer: ", value2);
     }
 
-    public void onClickSplit1Button(View button){
+    public void onClickSplitButton(View button){
         player1.blackjackInGameBooleanSwitch();
         onClickResultOrSplitButton(button);
         stick.setVisibility(View.INVISIBLE);
