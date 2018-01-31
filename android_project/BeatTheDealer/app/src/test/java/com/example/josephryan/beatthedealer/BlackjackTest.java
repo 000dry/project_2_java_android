@@ -44,22 +44,39 @@ public class BlackjackTest {
 
     @Test
     public void canGetValueOfHandWithFiveCards(){
-        player1.acceptCard(card1);
-        player1.acceptCard(card1);
-        player1.acceptCard(card1);
-        player1.acceptCard(card1);
-        player1.acceptCard(card1);
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card1); //4
         assertEquals(20, player1.checkValueOfHand());
     }
 
     @Test
     public void canGetResult(){
-        player1.acceptCard(card1);
-        player1.acceptCard(card2);
-        dealer.acceptCard(card3);
-        dealer.acceptCard(card4);
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card2); //7
+        dealer.acceptCard(card3);  //2
+        dealer.acceptCard(card3);  //2
         assertEquals("Player Wins", blackjack.getResult(player1, dealer));
         assertEquals(2, player1.getScore());
+    }
+
+    @Test
+    public void canCheckHandForAces(){
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card1); //4
+        player1.acceptCard(card4); //A
+        assertEquals(2, blackjack.checkHandForAces(player1));
+    }
+
+    @Test
+    public void canDecreaseHandValueBy10ForEveryAceWhilstScoreIsOver21(){
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card1); //4
+        assertEquals(17, blackjack.shouldAdjustForLowAce(player1));
     }
 
 }

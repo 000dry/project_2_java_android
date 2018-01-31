@@ -11,14 +11,13 @@ import android.widget.TextView;
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
-import com.example.josephryan.beatthedealer.Games.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
 
-public class OnePlayerActivity extends AppCompatActivity {
+public class BeatTheDealerActivity extends AppCompatActivity {
 
     BeatTheDealer game;
     Dealer dealer;
@@ -115,7 +114,7 @@ public class OnePlayerActivity extends AppCompatActivity {
 
         Suit suit3 = dealer.getHand().get(0).getSuit();  // *
         int suit3ID = suitImages.cardIcons().get(suit3); // *
-        dealerCard1.setImageResource(suit3ID);           // *
+        dealerCard1.setImageResource(suit3ID);           //
 
         String card1 = ranks.rankStrings().get(player1.getHand().get(0).getRank()); // *
         playerCard1Num1.setText(card1); // *
@@ -167,7 +166,10 @@ public class OnePlayerActivity extends AppCompatActivity {
         player1.emptyHand();
         player1.setInGameToTrue();
         changeVisibilityOnClickKeepPlaying();
+        resetText();
+    }
 
+    private void resetText(){
         playerCard1Num1.setText("");
         playerCard1Num2.setText("");
         playerCard2Num1.setText("");
