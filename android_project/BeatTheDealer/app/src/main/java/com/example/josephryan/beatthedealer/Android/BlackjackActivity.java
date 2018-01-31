@@ -9,19 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;
+import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
-import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
+import com.example.josephryan.beatthedealer.Games.Blackjack;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
-import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
+public class BlackjackActivity extends AppCompatActivity {
 
-public class BeatTheDealerActivity extends AppCompatActivity {
-
-    BeatTheDealer game;
+    Blackjack game;
     Dealer dealer;
     Player player1;
     RankHashMap ranks;
@@ -54,9 +53,9 @@ public class BeatTheDealerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_blackjack);
 
-        game = new BeatTheDealer();
+        game = new Blackjack();
         dealer = new Dealer(0, true, new Deck());
         player1 = new Player(0, true);
         game.addPlayer(player1);
@@ -98,38 +97,6 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         createCards(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
     }
 
-    public void onClickResultButton(View button){
-        changeVisibilityOnClickResult();
-        createCards(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
-
-        String result = game.getResult(player1, dealer);
-        resultDisplay.setText(result);
-
-        String points1 = Integer.toString(dealer.getScore());
-        dealerScore.setText(points1);
-
-        String points2 = Integer.toString(player1.getScore());
-        playerScore.setText(points2);
-    }
-
-    public void onClickOptOutButton(View button){
-        player1.inGameBooleanSwitch();
-        onClickResultButton(button);
-        resultButton.setVisibility(View.INVISIBLE);
-    }
-
-    public void onClickNewSession(View button){
-        this.recreate();
-    }
-
-    public void onClickKeepPlaying(View button){
-        dealer.emptyHand();
-        player1.emptyHand();
-        player1.setInGameToTrue();
-        changeVisibilityOnClickKeepPlaying();
-        resetText();
-    }
-
     //    *** View/Resource setters below ***
 
     public void createCards(Person person, int i, ImageView view1, TextView view2, TextView view3){
@@ -154,37 +121,4 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         dealerCard2.setVisibility(View.VISIBLE);
     }
 
-    private void changeVisibilityOnClickResult() {
-        resultDisplay.setVisibility(View.VISIBLE);
-        newSessionButton.setVisibility(View.VISIBLE);
-        keepPlayingButton.setVisibility(View.VISIBLE);
-        resultsFrame.setVisibility(View.VISIBLE);
-        resultButton.setVisibility(View.INVISIBLE);
-        optOutButton.setVisibility(View.INVISIBLE);
-        cardBack.setVisibility(View.INVISIBLE);
-    }
-
-    public void changeVisibilityOnClickKeepPlaying(){
-        resultDisplay.setVisibility(View.INVISIBLE);
-        newSessionButton.setVisibility(View.INVISIBLE);
-        keepPlayingButton.setVisibility(View.INVISIBLE);
-        cardBack.setVisibility(View.VISIBLE);
-        playerCard1.setVisibility(View.INVISIBLE);
-        playerCard2.setVisibility(View.INVISIBLE);
-        dealerCard1.setVisibility(View.INVISIBLE);
-        dealerCard2.setVisibility(View.INVISIBLE);
-        dealerCard2.setImageResource(R.drawable.cardback);
-        resultsFrame.setVisibility(View.INVISIBLE);
-    }
-
-    private void resetText(){
-        playerCard1Num1.setText("");
-        playerCard1Num2.setText("");
-        playerCard2Num1.setText("");
-        playerCard2Num2.setText("");
-        dealerCard1Num1.setText("");
-        dealerCard1Num2.setText("");
-        dealerCard2Num1.setText("");
-        dealerCard2Num2.setText("");
-    }
 }
