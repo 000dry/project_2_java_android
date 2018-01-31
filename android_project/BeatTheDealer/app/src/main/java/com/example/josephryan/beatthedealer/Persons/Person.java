@@ -1,6 +1,7 @@
 package com.example.josephryan.beatthedealer.Persons;
 
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;
+import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 
 import java.util.ArrayList;
 
@@ -52,5 +53,30 @@ public abstract class Person {
             value += this.checkCardValue(i);
         }
         return value;
+    }
+
+    public int checkHandForAces(){
+        int aceCount = 0;
+        ArrayList<Card> hand = this.getHand();
+
+        for(int i = 0; i < hand.size(); i++){
+            Card card = hand.get(i);
+            if(card.getRank() == Rank.ACE){
+                aceCount += 1;
+            }
+        }
+        return aceCount;
+    }
+
+    public int shouldAdjustForLowAce(){
+        int personHand = this.checkValueOfHand();
+        int aceCount = this.checkHandForAces();
+
+        for(int i = 0; i < aceCount; i++){
+            if(personHand > 21) {
+                personHand -= 10;
+            }
+        }
+        return personHand;
     }
 }

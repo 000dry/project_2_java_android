@@ -12,4 +12,6 @@
     <string name="stick">Stick</string>
     <string name="split">Split</string>
     <string name="hit">Hit</string>
+    <string name="dealers_turn">Dealer\'s Turn</string>
+    <string name="result">Result</string>
 </resources>

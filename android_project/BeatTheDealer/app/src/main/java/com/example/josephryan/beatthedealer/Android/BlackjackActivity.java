@@ -2,6 +2,7 @@ package com.example.josephryan.beatthedealer.Android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,6 +33,8 @@ public class BlackjackActivity extends AppCompatActivity {
     Button split;
     Button stick;
     Button hit;
+    Button dealerTurn;
+    Button resultButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -70,6 +73,8 @@ public class BlackjackActivity extends AppCompatActivity {
         split = findViewById(R.id.split);
         stick = findViewById(R.id.stick);
         hit = findViewById(R.id.hit);
+        dealerTurn = findViewById(R.id.dealers_turn);
+        resultButton = findViewById(R.id.result_button);
         resultDisplay = findViewById(R.id.result_display);
         dealerScore = findViewById(R.id.dealer_score);
         playerScore = findViewById(R.id.player_score);
@@ -94,14 +99,33 @@ public class BlackjackActivity extends AppCompatActivity {
         dealer.dealForRound(game);
         dealer.dealForRound(game);
         changeVisibilityOnClickDealButton();
-        createCards(player1, 0, playerCard1, playerCard1Num1, playerCard1Num2);
-        createCards(player1, 1, playerCard2, playerCard2Num1, playerCard2Num2);
-        createCards(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
+        setCard(player1, 0, playerCard1, playerCard1Num1, playerCard1Num2);
+        setCard(player1, 1, playerCard2, playerCard2Num1, playerCard2Num2);
+        setCard(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
+
+        String value1 = Integer.toString(player1.checkValueOfHand());
+        Log.d("Player: ", value1);
+        String value2 = Integer.toString(dealer.checkValueOfHand());
+        Log.d("Dealer: ", value2);
+    }
+
+    public void onClickHitButton(View button){
+        dealer.dealCard(player1, game);
     }
 
     public void onClickStickButton(View button){
+        changeVisibilityOnClickStickButton();
+    }
+
+    public void onClickDealersTurnButton(View button){
+        dealer.shouldDrawCard(game);
+        resultButton.setVisibility(View.VISIBLE);
+        button.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
-        createCards(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
+        setCard(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
@@ -111,11 +135,16 @@ public class BlackjackActivity extends AppCompatActivity {
 
         String points2 = Integer.toString(player1.getScore());
         playerScore.setText(points2);
+
+        String value1 = Integer.toString(player1.checkValueOfHand());
+        Log.d("Player: ", value1);
+        String value2 = Integer.toString(dealer.checkValueOfHand());
+        Log.d("Dealer: ", value2);
     }
 
-    public void onClickOptOutButton(View button){
-        player1.inGameBooleanSwitch();
-        onClickStickButton(button);
+    public void onClickSplit1Button(View button){
+        player1.blackjackInGameBooleanSwitch();
+        onClickResultOrSplitButton(button);
         stick.setVisibility(View.INVISIBLE);
     }
 
@@ -133,7 +162,7 @@ public class BlackjackActivity extends AppCompatActivity {
 
     //    *** View/Resource setters below ***
 
-    public void createCards(Person person, int i, ImageView view1, TextView view2, TextView view3){
+    public void setCard(Person person, int i, ImageView view1, TextView view2, TextView view3){
         Card card = person.getHand().get(i);
 
         Suit suit = card.getSuit();
@@ -143,6 +172,14 @@ public class BlackjackActivity extends AppCompatActivity {
         String rank = ranks.rankStrings().get(card.getRank());
         view2.setText(rank);
         view3.setText(rank);
+    }
+
+    private void changeVisibilityOnClickStickButton(){
+        dealerTurn.setVisibility(View.VISIBLE);
+        hit.setVisibility(View.INVISIBLE);
+        split.setVisibility(View.INVISIBLE);
+        stick.setVisibility(View.INVISIBLE);
+
     }
 
     private void changeVisibilityOnClickDealButton(){
@@ -163,7 +200,9 @@ public class BlackjackActivity extends AppCompatActivity {
         resultsFrame.setVisibility(View.VISIBLE);
         stick.setVisibility(View.INVISIBLE);
         split.setVisibility(View.INVISIBLE);
+        hit.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.INVISIBLE);
+        resultButton.setVisibility(View.INVISIBLE);
     }
 
     public void changeVisibilityOnClickKeepPlaying(){

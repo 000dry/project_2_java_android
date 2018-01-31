@@ -20,4 +20,12 @@ public class Player extends Person {
         this.inGame = this.getInGame() ? false : true;
     }
 
+    public void blackjackInGameBooleanSwitch(){
+        int aceCount = this.checkHandForAces();
+
+        if(aceCount == 0 && this.checkValueOfHand() <= 21)
+            this.inGame = this.getInGame() ? false : true;
+
+    }
+
 }
