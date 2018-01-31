@@ -79,4 +79,15 @@ public class BlackjackTest {
         assertEquals(17, blackjack.shouldAdjustForLowAce(player1));
     }
 
+    @Test
+    public void fourAcesBeatsTwoFours(){
+        player1.acceptCard(card4);
+        player1.acceptCard(card4);
+        player1.acceptCard(card4);
+        player1.acceptCard(card4);
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card1);
+        assertEquals("Player Wins", blackjack.getResult(player1, dealer));
+    }
+
 }

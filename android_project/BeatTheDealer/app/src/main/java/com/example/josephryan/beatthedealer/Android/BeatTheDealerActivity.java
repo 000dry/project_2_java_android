@@ -8,11 +8,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
+import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
@@ -87,51 +89,18 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         resultsFrame = findViewById(R.id.result_frame);
     }
 
-//    public void cardImageSetter(ImageView image){
-//        for(int i = 0; i < game.getPlayerCount(); i++) {
-//            Person player = game.getPlayer(i);
-//            for(int j = 0; j < player.getHand().size(); j++){
-//                Suit suit = player.getHand().get(j).getSuit();
-//                int suitID = suitImages.cardIcons().get(suit);
-//
-//            }
-//        }
-//        image.setImageResource(suitID);
-//    }
-
     public void onDealButtonClick(View button){
         dealer.dealForRound(game);
         dealer.dealForRound(game);
         changeVisibilityOnClickDealButton();
-
-        Suit suit1 = player1.getHand().get(0).getSuit(); //write all this into separate method
-        int suit1ID = suitImages.cardIcons().get(suit1); // *
-        playerCard1.setImageResource(suit1ID);           // *
-
-        Suit suit2 = player1.getHand().get(1).getSuit(); // *
-        int suit2ID = suitImages.cardIcons().get(suit2); // *
-        playerCard2.setImageResource(suit2ID);           // *
-
-        Suit suit3 = dealer.getHand().get(0).getSuit();  // *
-        int suit3ID = suitImages.cardIcons().get(suit3); // *
-        dealerCard1.setImageResource(suit3ID);           //
-
-        String card1 = ranks.rankStrings().get(player1.getHand().get(0).getRank()); // *
-        playerCard1Num1.setText(card1); // *
-        playerCard1Num2.setText(card1); // *
-
-        String card2 = ranks.rankStrings().get(player1.getHand().get(1).getRank()); // *
-        playerCard2Num1.setText(card2); // *
-        playerCard2Num2.setText(card2); // *
-
-        String card3 = ranks.rankStrings().get(dealer.getHand().get(0).getRank());
-        dealerCard1Num1.setText(card3);
-        dealerCard1Num2.setText(card3);
-
+        createCards(player1, 0, playerCard1, playerCard1Num1, playerCard1Num2);
+        createCards(player1, 1, playerCard1, playerCard2Num1, playerCard2Num2);
+        createCards(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
     }
 
     public void onClickResultButton(View button){
         changeVisibilityOnClickResult();
+        createCards(dealer, 1, dealerCard1, dealerCard1Num1, dealerCard1Num2);
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
@@ -141,14 +110,6 @@ public class BeatTheDealerActivity extends AppCompatActivity {
 
         String points2 = Integer.toString(player1.getScore());
         playerScore.setText(points2);
-
-        Suit suit4 = dealer.getHand().get(1).getSuit();
-        int suit4ID = suitImages.cardIcons().get(suit4);
-        dealerCard2.setImageResource(suit4ID);
-
-        String card4 = ranks.rankStrings().get(dealer.getHand().get(1).getRank());
-        dealerCard2Num1.setText(card4);
-        dealerCard2Num2.setText(card4);
     }
 
     public void onClickOptOutButton(View button){
@@ -169,16 +130,19 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         resetText();
     }
 
-    private void resetText(){
-        playerCard1Num1.setText("");
-        playerCard1Num2.setText("");
-        playerCard2Num1.setText("");
-        playerCard2Num2.setText("");
-        dealerCard1Num1.setText("");
-        dealerCard1Num2.setText("");
-        dealerCard2Num1.setText("");
-        dealerCard2Num2.setText("");
+    public void createCards(Person person, int i, ImageView view1, TextView view2, TextView view3){
+        Card card = person.getHand().get(i);
+
+        Suit suit = card.getSuit();
+        int suitID = suitImages.cardIcons().get(suit);
+        view1.setImageResource(suitID);
+
+        String rank = ranks.rankStrings().get(card.getRank());
+        view2.setText(rank);
+        view3.setText(rank);
     }
+
+//    *** View/Resource setters below ***
 
     private void changeVisibilityOnClickDealButton(){
         cardBack.setVisibility(View.INVISIBLE);
@@ -211,5 +175,16 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         dealerCard2.setVisibility(View.INVISIBLE);
         dealerCard2.setImageResource(R.drawable.cardback);
         resultsFrame.setVisibility(View.INVISIBLE);
+    }
+
+    private void resetText(){
+        playerCard1Num1.setText("");
+        playerCard1Num2.setText("");
+        playerCard2Num1.setText("");
+        playerCard2Num2.setText("");
+        dealerCard1Num1.setText("");
+        dealerCard1Num2.setText("");
+        dealerCard2Num1.setText("");
+        dealerCard2Num2.setText("");
     }
 }
