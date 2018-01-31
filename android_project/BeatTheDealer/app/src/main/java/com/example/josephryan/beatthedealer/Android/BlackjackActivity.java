@@ -239,6 +239,4 @@ public class BlackjackActivity extends AppCompatActivity {
         dealerCard2Num1.setText("");
         dealerCard2Num2.setText("");
     }
-
-
 }
