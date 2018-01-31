@@ -81,13 +81,26 @@ public class BlackjackTest {
 
     @Test
     public void fourAcesBeatsTwoFours(){
-        player1.acceptCard(card4);
-        player1.acceptCard(card4);
-        player1.acceptCard(card4);
-        player1.acceptCard(card4);
-        dealer.acceptCard(card1);
-        dealer.acceptCard(card1);
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        dealer.acceptCard(card1);  //2
+        dealer.acceptCard(card1);  //2
         assertEquals("Player Wins", blackjack.getResult(player1, dealer));
+    }
+
+    @Test
+    public void simulateGame__dealerHandLessThan13_playerHasTwoAces(){
+        player1.acceptCard(card4); //A
+        player1.acceptCard(card4); //A
+        dealer.acceptCard(card3);  //2
+        dealer.acceptCard(card3);  //2
+        dealer.shouldDrawCard(blackjack);
+        blackjack.shouldAdjustForLowAce(player1);
+        boolean result = dealer.getHand().size() > 2;
+        assertEquals(true, result);
+        assertEquals(12, blackjack.shouldAdjustForLowAce(player1));
     }
 
 }

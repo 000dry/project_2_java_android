@@ -18,7 +18,9 @@ public abstract class Game {
         this.maxCards = maxCards;
     }
 
-
+    public int getMaxCards() {
+        return this.maxCards;
+    }
 
     public void addPlayer(Person person) {
         this.playersInGame.add(person);

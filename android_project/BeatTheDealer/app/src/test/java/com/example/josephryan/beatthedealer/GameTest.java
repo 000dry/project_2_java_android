@@ -45,6 +45,12 @@ public class GameTest {
     }
 
     @Test
+    public void canGetMaxCards(){
+        assertEquals(2, beatTheDealer.getMaxCards());
+        assertEquals(5, blackjack.getMaxCards());
+    }
+
+    @Test
     public void canAddPlayerToGame(){
         beatTheDealer.addPlayer(player1);
         blackjack.addPlayer(player2);
@@ -58,8 +64,14 @@ public class GameTest {
     }
 
     @Test
-    public void canUpdateScore__negativeIntCantGoBelow0(){
+    public void canUpdateScore__negativeInt(){
         beatTheDealer.updateScore(dealer, -2);
         assertEquals(0, dealer.getScore());
+    }
+
+    @Test
+    public void canUpdateScore__negativeIntCantGoBelow0(){
+        beatTheDealer.updateScore(player1, -2);
+        assertEquals(0, player1.getScore());
     }
 }

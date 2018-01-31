@@ -47,9 +47,36 @@ public class DealerTest {
 
     @Test
     public void canDealCard() {
-        dealer.dealCard(player1);
+        dealer.dealCard(player1, beatTheDealer);
         assertEquals(1, player1.getHand().size());
         assertEquals(51, dealer.getDeck().getCardDeck().size());
+    }
+
+    @Test
+    public void cannotDealMoreCardsThanGamesMaxCard__blackjack(){
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        dealer.dealCard(player1, blackjack);
+        assertEquals(5, player1.getHand().size());
+    }
+
+    @Test
+    public void cannotDealMoreCardsThanGamesMaxCard__beatTheDealer(){
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        dealer.dealCard(player1, beatTheDealer);
+        assertEquals(2, player1.getHand().size());
     }
 
     @Test
@@ -68,7 +95,7 @@ public class DealerTest {
     public void dealerTakesExtraCardIfHandValueUnder13(){
         dealer.acceptCard(card1);
         dealer.acceptCard(card3);
-        dealer.shouldDrawCard();
+        dealer.shouldDrawCard(blackjack);
         assertEquals(3, dealer.getHand().size());
     }
 }

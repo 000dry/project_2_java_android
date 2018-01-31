@@ -23,9 +23,14 @@ public class Dealer extends Person{
         return this.hand;
     }
 
-    public void dealCard(Person person) {
-        Card card = deck.removeCard();
-        person.acceptCard(card);
+    public void dealCard(Person person, Game game) {
+        int cardLimit = game.getMaxCards();
+        int handSize = person.getHand().size();
+
+        if(handSize < cardLimit) {
+            Card card = deck.removeCard();
+            person.acceptCard(card);
+        }
     }
 
     public void dealForRound(Game game){
@@ -33,16 +38,15 @@ public class Dealer extends Person{
 
         for(int i = 0; i < game.getPlayerCount(); i++){
             Person person = game.getPlayer(i);
-            this.dealCard(person);
+            this.dealCard(person, game);
         }
     }
 
-    public void shouldDrawCard() {
+    public void shouldDrawCard(Game game) {
         int dealerHand = this.checkValueOfHand();
 
         if(dealerHand < 13){
-            Card card = deck.removeCard();
-            this.acceptCard(card);
+            dealCard(this, game);
         }
     }
 }
