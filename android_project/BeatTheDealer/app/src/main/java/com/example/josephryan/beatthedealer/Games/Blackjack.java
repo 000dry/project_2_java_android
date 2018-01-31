@@ -22,22 +22,28 @@ public class Blackjack extends Game{
         int dealerHand = this.shouldAdjustForLowAce(dealer);
         int playerHand = this.shouldAdjustForLowAce(player);
 
-        if(playerHand > dealerHand && playerHand < 21){
-            updateScore(player, 2);
-            updateScore(dealer, -1);
-            return "Player Wins";
-        } else if(playerHand < dealerHand){
-            updateScore(player, -1);
-            updateScore(dealer, 2);
-            return "Dealer Wins";
-        } else if(playerHand > 21){
-            updateScore(player, -1);
-            updateScore(dealer, 2);
-            return "Dealer Wins";
+        if(player.getInGame()){
+            if(playerHand > dealerHand && playerHand < 21){
+                updateScore(player, 2);
+                updateScore(dealer, -1);
+                return "Player Wins";
+            } else if(playerHand < dealerHand){
+                updateScore(player, -1);
+                updateScore(dealer, 2);
+                return "Dealer Wins";
+            } else if(playerHand > 21){
+                updateScore(player, -1);
+                updateScore(dealer, 2);
+                return "Dealer Wins";
+            } else {
+                updateScore(player, 1);
+                updateScore(dealer, 1);
+                return "Draw";
+            }
         } else {
-            updateScore(player, 1);
-            updateScore(dealer, 1);
-            return "Draw";
+            updateScore(player, 0);
+            updateScore(dealer, 2);
+            return "Forfeit";
         }
     }
 

@@ -29,8 +29,9 @@ public class BlackjackActivity extends AppCompatActivity {
     ImageButton cardBack;
     ImageButton newSessionButton;
     ImageButton keepPlayingButton;
-    Button optOutButton;
-    Button resultButton;
+    Button split;
+    Button stick;
+    Button hit;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -66,8 +67,9 @@ public class BlackjackActivity extends AppCompatActivity {
         cardBack = findViewById(R.id.card_back);
         newSessionButton = findViewById(R.id.new_session);
         keepPlayingButton = findViewById(R.id.keep_playing);
-        optOutButton = findViewById(R.id.opt_out);
-        resultButton = findViewById(R.id.get_result);
+        split = findViewById(R.id.split);
+        stick = findViewById(R.id.stick);
+        hit = findViewById(R.id.hit);
         resultDisplay = findViewById(R.id.result_display);
         dealerScore = findViewById(R.id.dealer_score);
         playerScore = findViewById(R.id.player_score);
@@ -97,7 +99,7 @@ public class BlackjackActivity extends AppCompatActivity {
         createCards(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
     }
 
-    public void onClickResultButton(View button){
+    public void onClickStickButton(View button){
         changeVisibilityOnClickResult();
         createCards(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
 
@@ -113,8 +115,8 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickOptOutButton(View button){
         player1.inGameBooleanSwitch();
-        onClickResultButton(button);
-        resultButton.setVisibility(View.INVISIBLE);
+        onClickStickButton(button);
+        stick.setVisibility(View.INVISIBLE);
     }
 
     public void onClickNewSession(View button){
@@ -145,8 +147,9 @@ public class BlackjackActivity extends AppCompatActivity {
 
     private void changeVisibilityOnClickDealButton(){
         cardBack.setVisibility(View.INVISIBLE);
-        optOutButton.setVisibility(View.VISIBLE);
-        resultButton.setVisibility(View.VISIBLE);
+        split.setVisibility(View.VISIBLE);
+        stick.setVisibility(View.VISIBLE);
+        hit.setVisibility(View.VISIBLE);
         playerCard1.setVisibility(View.VISIBLE);
         playerCard2.setVisibility(View.VISIBLE);
         dealerCard1.setVisibility(View.VISIBLE);
@@ -158,8 +161,8 @@ public class BlackjackActivity extends AppCompatActivity {
         newSessionButton.setVisibility(View.VISIBLE);
         keepPlayingButton.setVisibility(View.VISIBLE);
         resultsFrame.setVisibility(View.VISIBLE);
-        resultButton.setVisibility(View.INVISIBLE);
-        optOutButton.setVisibility(View.INVISIBLE);
+        stick.setVisibility(View.INVISIBLE);
+        split.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.INVISIBLE);
     }
 

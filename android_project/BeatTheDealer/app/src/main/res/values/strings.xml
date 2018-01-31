@@ -9,4 +9,7 @@
     <string name="score">Score:</string>
     <string name="opt_out">Opt Out</string>
     <string name="title_activity_blackjack">BlackjackActivity</string>
+    <string name="stick">Stick</string>
+    <string name="split">Split</string>
+    <string name="hit">Hit</string>
 </resources>
