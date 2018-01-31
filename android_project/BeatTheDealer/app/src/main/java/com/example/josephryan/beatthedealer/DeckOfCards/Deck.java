@@ -20,8 +20,10 @@ public class Deck {
         Suit[] allSuits = Suit.values();
         Rank[] allRanks = Rank.values();
 
-        for (Suit suit: allSuits){
-            for (Rank rank: allRanks) {
+        for (int i = 0; i < allSuits.length; i++){
+            for (int j = 0; j < allRanks.length; j++) {
+                Suit suit = allSuits[i];
+                Rank rank = allRanks[j];
                 Card newCard = new Card(suit, rank);
                 this.cardDeck.add(newCard);
             }

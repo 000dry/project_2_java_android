@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 public class Blackjack extends Game{
 
+    public Blackjack(){
+        super(5);
+    }
+
     public String getResult(Player player, Dealer dealer) {
         int dealerHand = this.shouldAdjustForLowAce(dealer);
         int playerHand = this.shouldAdjustForLowAce(player);

@@ -5,6 +5,7 @@ import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
+import com.example.josephryan.beatthedealer.Games.Blackjack;
 import com.example.josephryan.beatthedealer.Games.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.Persons.Player;
@@ -20,7 +21,8 @@ import static org.junit.Assert.assertEquals;
 
 public class GameTest {
 
-    Game game;
+    BeatTheDealer beatTheDealer;
+    Blackjack blackjack;
     Deck deck;
     Dealer dealer;
     Player player1;
@@ -31,7 +33,8 @@ public class GameTest {
 
     @Before
     public void before() {
-        game = new BeatTheDealer();
+        beatTheDealer = new BeatTheDealer();
+        blackjack = new Blackjack();
         deck = new Deck();
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
@@ -43,40 +46,20 @@ public class GameTest {
 
     @Test
     public void canAddPlayerToGame(){
-        game.addPlayer(player1);
-        game.addPlayer(player2);
-        assertEquals(2, game.getPlayerCount());
-    }
-
-    @Test
-    public void canCheckCardValue(){
-        player1.acceptCard(card1);
-        assertEquals(4, player1.checkCardValue(0));
-    }
-
-    @Test
-    public void canGetValueOfAHand__Player(){
-        player1.acceptCard(card1);
-        player1.acceptCard(card2);
-        assertEquals(11, player1.checkValueOfHand());
-    }
-
-    @Test
-    public void canCheckValueOfAHand__Dealer(){
-        dealer.acceptCard(card1);
-        dealer.acceptCard(card2);
-        assertEquals(11, dealer.checkValueOfHand());
+        beatTheDealer.addPlayer(player1);
+        blackjack.addPlayer(player2);
+        assertEquals(1, beatTheDealer.getPlayerCount());
     }
 
     @Test
     public void canUpdateScore__positiveInt(){
-        game.updateScore(player1, 2);
+        beatTheDealer.updateScore(player1, 2);
         assertEquals(2, player1.getScore());
     }
 
     @Test
-    public void canUpdateScore__negativeInt(){
-        game.updateScore(dealer, -2);
+    public void canUpdateScore__negativeIntCantGoBelow0(){
+        beatTheDealer.updateScore(dealer, -2);
         assertEquals(0, dealer.getScore());
     }
 }

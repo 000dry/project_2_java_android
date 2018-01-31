@@ -66,4 +66,24 @@ public class PersonTest {
         assertEquals(0, player.getHand().size());
         assertEquals(0, dealer.getHand().size());
     }
+
+    @Test
+    public void canCheckCardValue(){
+        player.acceptCard(card1);
+        assertEquals(11, player.checkCardValue(0));
+    }
+
+    @Test
+    public void canGetValueOfAHand__Player(){
+        player.acceptCard(card1);
+        player.acceptCard(card2);
+        assertEquals(19, player.checkValueOfHand());
+    }
+
+    @Test
+    public void canCheckValueOfAHand__Dealer(){
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card2);
+        assertEquals(19, dealer.checkValueOfHand());
+    }
 }

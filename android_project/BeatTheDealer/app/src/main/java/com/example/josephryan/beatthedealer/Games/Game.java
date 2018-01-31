@@ -11,10 +11,14 @@ import java.util.ArrayList;
 public abstract class Game {
 
     ArrayList<Person> playersInGame;
+    int maxCards;
 
-    public Game(){
+    public Game(int maxCards){
         this.playersInGame = new ArrayList<>();
+        this.maxCards = maxCards;
     }
+
+
 
     public void addPlayer(Person person) {
         this.playersInGame.add(person);

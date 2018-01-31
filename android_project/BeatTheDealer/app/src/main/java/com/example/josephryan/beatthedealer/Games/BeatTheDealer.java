@@ -9,6 +9,10 @@ import com.example.josephryan.beatthedealer.Persons.Player;
 
 public class BeatTheDealer extends Game {
 
+    public BeatTheDealer(){
+        super(2);
+    }
+
     public String getResult(Player player, Dealer dealer) {
         int dealerHand = dealer.checkValueOfHand();
         int playerHand = player.checkValueOfHand();
