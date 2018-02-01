@@ -102,8 +102,8 @@ public class DealerTest {
     @Test
     public void canSetAllButFirstCardFaceDown(){
         dealer.acceptCard(card1);
-        dealer.acceptCard(card1);
-        dealer.acceptCard(card1);
+        dealer.acceptCard(card2);
+        dealer.acceptCard(card3);
         dealer.setCardsExceptFirstFaceDown();
         assertEquals(true, dealer.getHand().get(0).isFaceUp());
         assertEquals(false, dealer.getHand().get(1).isFaceUp());
