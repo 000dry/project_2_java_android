@@ -50,8 +50,14 @@ public class CardTest {
     }
 
     @Test
-    public void canSwitchFaceUp(){
-        card.switchFaceUp();
+    public void canSetFaceUpToFalse(){
+        card.setFaceUpToFalse();
         assertEquals(false, card.isFaceUp());
+    }
+
+    @Test
+    public void canSetFaceUpToTrue(){
+        card.setFaceUpToTrue();
+        assertEquals(true, card.isFaceUp());
     }
 }

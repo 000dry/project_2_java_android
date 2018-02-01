@@ -97,6 +97,7 @@ public class BlackjackActivity extends AppCompatActivity {
     public void onDealButtonClick(View button){
         dealer.dealForRound(game);
         dealer.dealForRound(game);
+        dealer.setCardsExceptFirstFaceDown();
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -133,13 +134,12 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
+        dealer.getHand().get(0).setFaceUpToTrue();
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
-
         String points1 = Integer.toString(dealer.getScore());
         dealerScore.setText(points1);
-
         String points2 = Integer.toString(player1.getScore());
         playerScore.setText(points2);
     }

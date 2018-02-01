@@ -45,10 +45,13 @@ class BlackjackAdapter extends RecyclerView.Adapter<BlackjackAdapter.ViewHolder>
         Suit suit = card.getSuit();
         int suitID = suitImages.cardIcons().get(suit);
 
-        holder.cardSuit.setImageResource(suitID);
-
-        String rank = ranks.rankStrings().get(card.getRank());
-        holder.number1.setText(rank);
+        if(card.isFaceUp()) {
+            holder.cardSuit.setImageResource(suitID);
+            String rank = ranks.rankStrings().get(card.getRank());
+            holder.number1.setText(rank);
+        } else {
+            holder.cardSuit.setImageResource(R.drawable.cardback);
+        }
     }
 
     @Override

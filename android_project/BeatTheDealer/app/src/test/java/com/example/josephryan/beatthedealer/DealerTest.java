@@ -107,5 +107,6 @@ public class DealerTest {
         dealer.setCardsExceptFirstFaceDown();
         assertEquals(true, dealer.getHand().get(0).isFaceUp());
         assertEquals(false, dealer.getHand().get(1).isFaceUp());
+        assertEquals(false, dealer.getHand().get(2).isFaceUp());
     }
 }

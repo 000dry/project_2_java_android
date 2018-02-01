@@ -24,7 +24,11 @@ public class Card {
         return this.faceUp;
     }
 
-    public void switchFaceUp(){
-        this.faceUp = this.isFaceUp() ? false : true;
+    public void setFaceUpToFalse(){
+        this.faceUp = false;
+    }
+
+    public void setFaceUpToTrue(){
+        this.faceUp = true;
     }
 }

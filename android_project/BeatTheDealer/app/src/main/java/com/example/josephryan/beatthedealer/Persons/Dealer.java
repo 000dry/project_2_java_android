@@ -52,7 +52,7 @@ public class Dealer extends Person{
 
     public void setCardsExceptFirstFaceDown(){
         for (int i = 1; i < this.getHand().size(); i++) {
-            this.getHand().get(i).switchFaceUp();
+            this.getHand().get(i).setFaceUpToFalse();
         }
     }
 }
