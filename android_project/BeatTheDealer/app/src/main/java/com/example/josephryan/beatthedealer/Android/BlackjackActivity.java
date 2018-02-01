@@ -45,7 +45,7 @@ public class BlackjackActivity extends AppCompatActivity {
     Button hit;
     Button dealerTurn;
     Button resultButton;
-    Button menuButton;
+    ImageButton menuButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;

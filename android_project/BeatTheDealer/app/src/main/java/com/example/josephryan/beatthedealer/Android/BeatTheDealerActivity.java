@@ -33,7 +33,7 @@ public class BeatTheDealerActivity extends AppCompatActivity {
     ImageButton keepPlayingButton;
     Button optOutButton;
     Button resultButton;
-    Button menuButton;
+    ImageButton menuButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
