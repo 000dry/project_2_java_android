@@ -29,7 +29,7 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTitle.setText(mDataSet.get(position));
+        holder.mTitle.setText(mDataSet.get(position));               ///////////SETTER
     }
 
     @Override
@@ -42,7 +42,7 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public TextView mTitle;
 
         public ViewHolder(View itemView) {
-            super(itemView);
+            super(itemView);                                   ////////////VIEW HOLDER
             mTitle = itemView.findViewById(R.id.title);
         }
     }
