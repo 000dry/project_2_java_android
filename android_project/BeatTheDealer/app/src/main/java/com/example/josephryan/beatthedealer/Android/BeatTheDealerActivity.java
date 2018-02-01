@@ -1,5 +1,6 @@
 package com.example.josephryan.beatthedealer.Android;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class BeatTheDealerActivity extends AppCompatActivity {
     ImageButton keepPlayingButton;
     Button optOutButton;
     Button resultButton;
+    Button menuButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -69,6 +71,7 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         keepPlayingButton = findViewById(R.id.keep_playing);
         optOutButton = findViewById(R.id.opt_out);
         resultButton = findViewById(R.id.get_result);
+        menuButton = findViewById(R.id.menu_button);
         resultDisplay = findViewById(R.id.result_display);
         dealerScore = findViewById(R.id.dealer_score);
         playerScore = findViewById(R.id.player_score);
@@ -87,6 +90,11 @@ public class BeatTheDealerActivity extends AppCompatActivity {
         dealerCard1 = findViewById(R.id.dealer_card1);
         dealerCard2 = findViewById(R.id.dealer_card2);
         resultsFrame = findViewById(R.id.result_frame);
+    }
+
+    public void onClickMenuButton(View button){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     public void onDealButtonClick(View button){

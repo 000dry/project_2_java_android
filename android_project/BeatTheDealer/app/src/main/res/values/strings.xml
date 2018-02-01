@@ -16,4 +16,5 @@
     <string name="result">Result</string>
     <string name="game1">Beat The Dealer</string>
     <string name="game2">Blackjack</string>
+    <string name="menu">Menu</string>
 </resources>

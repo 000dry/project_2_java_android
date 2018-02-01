@@ -143,206 +143,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/player_card1"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="101dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:src="@drawable/cardbackdealer"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.35"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.9" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/dealer_card2"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="101dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:src="@drawable/cardbackdealer"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.35"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.100000024" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/dealer_card1"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="101dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:src="@drawable/cardbackdealer"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.654"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.100000024" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/player_card2"-->
-        <!--android:layout_width="70dp"-->
-        <!--android:layout_height="101dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:src="@drawable/cardbackdealer"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.654"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.9" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/dealer_card2_number1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="1dp"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintHorizontal_bias="0.03"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintVertical_bias="0.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/dealer_card1_number2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="1dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:rotation="180"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintHorizontal_bias="0.97"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/dealer_card1_number1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="1dp"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintHorizontal_bias="0.03"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/dealer_card1"-->
-        <!--app:layout_constraintVertical_bias="0.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/dealer_card2_number2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="1dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:rotation="180"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintHorizontal_bias="0.97"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/dealer_card2"-->
-        <!--app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/player_card1_number1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="1dp"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/player_card1"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/player_card1"-->
-        <!--app:layout_constraintHorizontal_bias="0.039"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/player_card1"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/player_card1"-->
-        <!--app:layout_constraintVertical_bias="0.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/player_card1_number2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="1dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:rotation="180"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/player_card1"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/player_card1"-->
-        <!--app:layout_constraintHorizontal_bias="0.97"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/player_card1"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/player_card1"-->
-        <!--app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/player_card2_number2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginEnd="1dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:rotation="180"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/player_card2"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/player_card2"-->
-        <!--app:layout_constraintHorizontal_bias="0.97"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/player_card2"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/player_card2"-->
-        <!--app:layout_constraintVertical_bias="1.0" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/player_card2_number1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="1dp"-->
-        <!--android:textSize="14sp"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/player_card2"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/player_card2"-->
-        <!--app:layout_constraintHorizontal_bias="0.03"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/player_card2"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/player_card2"-->
-        <!--app:layout_constraintVertical_bias="0.0" />-->
-
     <ImageButton
         android:id="@+id/new_session"
         android:layout_width="wrap_content"
@@ -483,5 +283,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/border"
         app:layout_constraintVertical_bias="0.100000024" />
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017" />
 
 </android.support.constraint.ConstraintLayout>

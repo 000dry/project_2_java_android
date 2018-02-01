@@ -1,5 +1,6 @@
 package com.example.josephryan.beatthedealer.Android;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,6 +45,7 @@ public class BlackjackActivity extends AppCompatActivity {
     Button hit;
     Button dealerTurn;
     Button resultButton;
+    Button menuButton;
     TextView resultDisplay;
     TextView dealerScore;
     TextView playerScore;
@@ -75,6 +77,7 @@ public class BlackjackActivity extends AppCompatActivity {
         cardBack = findViewById(R.id.card_back);
         newSessionButton = findViewById(R.id.new_session);
         keepPlayingButton = findViewById(R.id.keep_playing);
+        menuButton = findViewById(R.id.menu_button2);
         split = findViewById(R.id.split);
         stick = findViewById(R.id.stick);
         hit = findViewById(R.id.hit);
@@ -92,6 +95,11 @@ public class BlackjackActivity extends AppCompatActivity {
         dealerCard1 = findViewById(R.id.dealer_card1);
         dealerCard2 = findViewById(R.id.dealer_card2);
         resultsFrame = findViewById(R.id.result_frame);
+    }
+
+    public void onClickMenuButton(View button){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     public void onDealButtonClick(View button){
