@@ -32,9 +32,13 @@ public class BlackjackActivity extends AppCompatActivity {
     RankHashMap ranks;
     ImageResourceFinder suitImages;
     RecyclerView recyclerView;
+    RecyclerView recyclerView2;
     RecyclerView.LayoutManager layoutManager;
+    RecyclerView.LayoutManager layoutManager2;
     BlackjackAdapter adapter;
+    BlackjackAdapter adapter2;
     ArrayList<Card> playerHand;
+    ArrayList<Card> dealerHand;
 
     ImageButton cardBack;
     ImageButton newSessionButton;
@@ -70,6 +74,7 @@ public class BlackjackActivity extends AppCompatActivity {
         ranks = new RankHashMap();
         suitImages = new ImageResourceFinder();
         playerHand = player1.getHand();
+        dealerHand = dealer.getHand();
 
         cardBack = findViewById(R.id.card_back);
         newSessionButton = findViewById(R.id.new_session);
@@ -104,22 +109,19 @@ public class BlackjackActivity extends AppCompatActivity {
         adapter = new BlackjackAdapter(playerHand);
         recyclerView.setAdapter(adapter);
 
-        changeVisibilityOnClickDealButton();
-        setCard(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
+        recyclerView2 = findViewById(R.id.recycler_view2);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(layoutManager2);
+        adapter2 = new BlackjackAdapter(dealerHand);
+        recyclerView2.setAdapter(adapter2);
 
-        String value1 = Integer.toString(player1.checkValueOfHand());
-        Log.d("Player: ", value1);
-        String value2 = Integer.toString(dealer.checkValueOfHand());
-        Log.d("Dealer: ", value2);
+        changeVisibilityOnClickDealButton();
     }
 
     public void onClickHitButton(View button){
         dealer.dealCard(player1, game);
         adapter.notifyDataSetChanged();
-//        adapter.refreshView();
-
-        String value = Integer.toString(player1.checkValueOfHand());
-        Log.d("Player: ", value);
     }
 
     public void onClickStickButton(View button){
@@ -130,15 +132,11 @@ public class BlackjackActivity extends AppCompatActivity {
         dealer.shouldDrawCard(game);
         resultButton.setVisibility(View.VISIBLE);
         button.setVisibility(View.INVISIBLE);
-
-        String value2 = Integer.toString(dealer.checkValueOfHand());
-        Log.d("Dealer: ", value2);
+        adapter2.notifyDataSetChanged();
     }
 
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
-
-        setCard(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
@@ -148,11 +146,6 @@ public class BlackjackActivity extends AppCompatActivity {
 
         String points2 = Integer.toString(player1.getScore());
         playerScore.setText(points2);
-
-        String value1 = Integer.toString(player1.checkValueOfHand());
-        Log.d("Player: ", value1);
-        String value2 = Integer.toString(dealer.checkValueOfHand());
-        Log.d("Dealer: ", value2);
     }
 
     public void onClickSplitButton(View button){
@@ -175,18 +168,6 @@ public class BlackjackActivity extends AppCompatActivity {
 
     //    *** View/Resource setters below ***
 
-    public void setCard(Person person, int i, ImageView view1, TextView view2, TextView view3){
-        Card card = person.getHand().get(i);
-
-        Suit suit = card.getSuit();
-        int suitID = suitImages.cardIcons().get(suit);
-        view1.setImageResource(suitID);
-
-        String rank = ranks.rankStrings().get(card.getRank());
-        view2.setText(rank);
-        view3.setText(rank);
-    }
-
     private void changeVisibilityOnClickStickButton(){
         dealerTurn.setVisibility(View.VISIBLE);
         hit.setVisibility(View.INVISIBLE);
@@ -200,8 +181,6 @@ public class BlackjackActivity extends AppCompatActivity {
         split.setVisibility(View.VISIBLE);
         stick.setVisibility(View.VISIBLE);
         hit.setVisibility(View.VISIBLE);
-        dealerCard1.setVisibility(View.VISIBLE);
-        dealerCard2.setVisibility(View.VISIBLE);
     }
 
     private void changeVisibilityOnClickResult() {
@@ -221,9 +200,6 @@ public class BlackjackActivity extends AppCompatActivity {
         newSessionButton.setVisibility(View.INVISIBLE);
         keepPlayingButton.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.VISIBLE);
-        dealerCard1.setVisibility(View.INVISIBLE);
-        dealerCard2.setVisibility(View.INVISIBLE);
-        dealerCard2.setImageResource(R.drawable.cardback);
         resultsFrame.setVisibility(View.INVISIBLE);
     }
 

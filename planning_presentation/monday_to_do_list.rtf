@@ -35,26 +35,36 @@
 \b0 \
 	
 \b general refactoring: 
-\b0 GameActivity in particular could do with some stuff being condensed down into additional 		methods \
+\b0 GameActivity in particular could do with some stuff being condensed down into additional 		methods 
+\b X
+\b0 \
 	\
 	
 \b Wednesday\
 	\
 	Ace high/low:
-\b0  set ace Enum value to 11 (?). In result method, if hand is above 21, loop through hand to check for 	aces. If found, minus 10 from hand value.\
+\b0  set ace Enum value to 11 (?). In result method, if hand is above 21, loop through hand to check for 	aces. If found, minus 10 from hand value. 
+\b X
+\b0 \
 	
 \b Limit deal on hand value: 
-\b0 perhaps create hand value property in person class so that deal function can no longer be 	called once value reaches 21 or over.\
+\b0 perhaps create hand value property in person class so that deal function can no longer be 	called once value reaches 21 or over. \
 	
 \b Refactor: 
-\b0 OnePLayerActivity\
+\b0 OnePLayerActivity 
+\b X
+\b0 \
 \
 	
 \b Blackjack rules:\
 \
 	- 
-\b0 Dealer can deal themselves bust\
-	- ace can be high or low\
+\b0 Dealer can deal themselves bust 
+\b X
+\b0 \
+	- ace can be high or low 
+\b X
+\b0 \
 \
 	-need to make sure player can\'92t split if they\'92re already bust\
 	-current boolean switch thing for blackjack needs moving into the game class, with a setter in player class\
@@ -63,4 +73,6 @@
 	CHANGE SPLIT TO FORFEIT\
 \
 	refactor Person class - take shouldAdjustForLowAce out of this class and place into dealer\
+\
+	add second number to cards\
 }

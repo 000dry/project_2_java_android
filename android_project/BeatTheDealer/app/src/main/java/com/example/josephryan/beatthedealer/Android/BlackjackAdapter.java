@@ -32,11 +32,6 @@ class BlackjackAdapter extends RecyclerView.Adapter<BlackjackAdapter.ViewHolder>
         ranks = new RankHashMap();
     }
 
-    public void refreshView(){
-
-        this.notifyDataSetChanged();
-    }
-
     @Override
     public BlackjackAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
@@ -54,7 +49,6 @@ class BlackjackAdapter extends RecyclerView.Adapter<BlackjackAdapter.ViewHolder>
 
         String rank = ranks.rankStrings().get(card.getRank());
         holder.number1.setText(rank);
-//        holder.number2.setText(rank);
     }
 
     @Override
@@ -66,13 +60,11 @@ class BlackjackAdapter extends RecyclerView.Adapter<BlackjackAdapter.ViewHolder>
 
         public ImageView cardSuit;
         public TextView number1;
-        public TextView number2;
 
         public ViewHolder(View itemView) {
             super(itemView);
             cardSuit = itemView.findViewById(R.id.card_image);
             number1 = itemView.findViewById(R.id.player_card_number1);
-//            number2 = itemView.findViewById(R.id.player_card_number2);
         }
     }
 }
