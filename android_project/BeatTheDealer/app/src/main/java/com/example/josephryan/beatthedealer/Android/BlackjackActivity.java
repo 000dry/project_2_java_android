@@ -138,7 +138,7 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
-        dealer.getHand().get(1).setFaceUpToTrue();
+        dealer.setAllCardsFaceUp();
         adapter2.notifyDataSetChanged();
 
         String result = game.getResult(player1, dealer);
@@ -163,6 +163,7 @@ public class BlackjackActivity extends AppCompatActivity {
         dealer.emptyHand();
         player1.emptyHand();
         player1.setInGameToTrue();
+        adapter2.notifyDataSetChanged();
         changeVisibilityOnClickKeepPlaying();
     }
 

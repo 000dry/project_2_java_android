@@ -10,13 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Android.BeatTheDealerActivity" />
-        <activity android:name=".Android.BlackjackActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Android.BlackjackActivity"/>
         <activity android:name=".Android.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
