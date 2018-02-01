@@ -55,5 +55,11 @@ public class Dealer extends Person{
             this.getHand().get(i).setFaceUpToFalse();
         }
     }
+
+    public void setAllCardsFaceUp(){
+        for (int i = 0; i < this.getHand().size(); i++) {
+            this.getHand().get(i).setFaceUpToTrue();
+        }
+    }
 }
 

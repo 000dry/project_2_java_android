@@ -109,4 +109,16 @@ public class DealerTest {
         assertEquals(false, dealer.getHand().get(1).isFaceUp());
         assertEquals(false, dealer.getHand().get(2).isFaceUp());
     }
+
+    @Test
+    public void canSetAllCardsFaceUp(){
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card2);
+        dealer.acceptCard(card3);
+        dealer.setCardsExceptFirstFaceDown();
+        dealer.setAllCardsFaceUp();
+        assertEquals(true, dealer.getHand().get(0).isFaceUp());
+        assertEquals(true, dealer.getHand().get(1).isFaceUp());
+        assertEquals(true, dealer.getHand().get(2).isFaceUp());
+    }
 }

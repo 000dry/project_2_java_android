@@ -79,5 +79,4 @@ public abstract class Person {
         }
         return personHand;
     }
-
 }
