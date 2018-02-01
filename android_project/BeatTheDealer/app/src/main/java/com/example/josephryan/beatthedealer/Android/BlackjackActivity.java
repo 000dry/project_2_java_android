@@ -3,6 +3,8 @@ package com.example.josephryan.beatthedealer.Android;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,8 @@ import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
+import java.util.ArrayList;
+
 public class BlackjackActivity extends AppCompatActivity {
 
     Blackjack game;
@@ -27,6 +31,9 @@ public class BlackjackActivity extends AppCompatActivity {
     Player player1;
     RankHashMap ranks;
     ImageResourceFinder suitImages;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+    RecyclerView.Adapter adapter;
 
     ImageButton cardBack;
     ImageButton newSessionButton;
@@ -99,6 +106,16 @@ public class BlackjackActivity extends AppCompatActivity {
     public void onDealButtonClick(View button){
         dealer.dealForRound(game);
         dealer.dealForRound(game);
+
+        ArrayList<Card> playerHand = player1.getHand();
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new BlackjackAdapter(playerHand);
+        recyclerView.setAdapter(adapter);
+
         changeVisibilityOnClickDealButton();
         setCard(player1, 0, playerCard1, playerCard1Num1, playerCard1Num2);
         setCard(player1, 1, playerCard2, playerCard2Num1, playerCard2Num2);
@@ -132,9 +149,6 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
-
-        ImageView newCard = new ImageView(this);
-        ConstraintLayout cl = new ConstraintLayout(this);
 
         setCard(dealer, 1, dealerCard2, dealerCard2Num1, dealerCard2Num2);
 
