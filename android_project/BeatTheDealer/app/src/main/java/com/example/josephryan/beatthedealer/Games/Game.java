@@ -1,6 +1,8 @@
 package com.example.josephryan.beatthedealer.Games;
 
+import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.Persons.Person;
+import com.example.josephryan.beatthedealer.Persons.Player;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,8 @@ public abstract class Game {
     public int getPlayerCount() {
         return this.playersInGame.size();
     }
+
+    public abstract String getResult(Player player, Dealer dealer);
 
     public void updateScore(Person person, int points){
         if(points < 0 && person.getScore() == 0) {

@@ -127,6 +127,10 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickDealersTurnButton(View button){
         dealer.shouldDrawCard(game);
+
+        int i = dealer.getHand().size();
+        dealer.getHand().get(i - 1).setFaceUpToFalse();
+
         resultButton.setVisibility(View.VISIBLE);
         button.setVisibility(View.INVISIBLE);
         adapter2.notifyDataSetChanged();
@@ -135,6 +139,7 @@ public class BlackjackActivity extends AppCompatActivity {
     public void onClickResultOrSplitButton(View button){
         changeVisibilityOnClickResult();
         dealer.getHand().get(0).setFaceUpToTrue();
+        adapter2.notifyDataSetChanged();
 
         String result = game.getResult(player1, dealer);
         resultDisplay.setText(result);
@@ -168,7 +173,6 @@ public class BlackjackActivity extends AppCompatActivity {
         hit.setVisibility(View.INVISIBLE);
         split.setVisibility(View.INVISIBLE);
         stick.setVisibility(View.INVISIBLE);
-
     }
 
     private void changeVisibilityOnClickDealButton(){
