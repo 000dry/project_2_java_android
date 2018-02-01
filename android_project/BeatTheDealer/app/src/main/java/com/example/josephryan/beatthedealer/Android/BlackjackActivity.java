@@ -1,11 +1,9 @@
 package com.example.josephryan.beatthedealer.Android;
 
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,10 +13,8 @@ import android.widget.TextView;
 import com.example.josephryan.beatthedealer.DeckOfCards.Card;
 import com.example.josephryan.beatthedealer.DeckOfCards.Deck;
 import com.example.josephryan.beatthedealer.DeckOfCards.RankHashMap;
-import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.Blackjack;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
-import com.example.josephryan.beatthedealer.Persons.Person;
 import com.example.josephryan.beatthedealer.Persons.Player;
 import com.example.josephryan.beatthedealer.R;
 
@@ -163,7 +159,6 @@ public class BlackjackActivity extends AppCompatActivity {
         player1.emptyHand();
         player1.setInGameToTrue();
         changeVisibilityOnClickKeepPlaying();
-        resetText();
     }
 
     //    *** View/Resource setters below ***
@@ -201,12 +196,5 @@ public class BlackjackActivity extends AppCompatActivity {
         keepPlayingButton.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.VISIBLE);
         resultsFrame.setVisibility(View.INVISIBLE);
-    }
-
-    private void resetText(){
-        dealerCard1Num1.setText("");
-        dealerCard1Num2.setText("");
-        dealerCard2Num1.setText("");
-        dealerCard2Num2.setText("");
     }
 }
