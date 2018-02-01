@@ -30,8 +30,8 @@ public class PersonTest {
         deck = new Deck();
         dealer = new Dealer(1, true, deck);
         player = new Player(1, true);
-        card1 = new Card(Suit.SPADES, Rank.ACE);
-        card2 = new Card(Suit.SPADES, Rank.EIGHT);
+        card1 = new Card(Suit.SPADES, Rank.ACE, true);
+        card2 = new Card(Suit.SPADES, Rank.EIGHT, true);
     }
 
     @Test

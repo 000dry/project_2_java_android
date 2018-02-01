@@ -6,7 +6,6 @@ import com.example.josephryan.beatthedealer.DeckOfCards.Rank;
 import com.example.josephryan.beatthedealer.DeckOfCards.Suit;
 import com.example.josephryan.beatthedealer.Games.BeatTheDealer;
 import com.example.josephryan.beatthedealer.Games.Blackjack;
-import com.example.josephryan.beatthedealer.Games.Game;
 import com.example.josephryan.beatthedealer.Persons.Dealer;
 import com.example.josephryan.beatthedealer.Persons.Player;
 
@@ -39,9 +38,9 @@ public class GameTest {
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
         player2 = new Player(2, true);
-        card1 = new Card(Suit.CLUBS, Rank.FOUR);
-        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
-        card3 = new Card(Suit.HEARTS, Rank.TWO);
+        card1 = new Card(Suit.CLUBS, Rank.FOUR, true);
+        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN, true);
+        card3 = new Card(Suit.HEARTS, Rank.TWO, true);
     }
 
     @Test

@@ -18,7 +18,7 @@ public class CardTest {
 
     @Before
     public void before() {
-        card = new Card(Suit.HEARTS, Rank.FOUR);
+        card = new Card(Suit.HEARTS, Rank.FOUR, true);
     }
 
     @Test
@@ -42,5 +42,16 @@ public class CardTest {
     public void canGetAllRanks() {
         Rank[] ranks = Rank.values();
         assertEquals(Rank.ACE, ranks[0]);
+    }
+
+    @Test
+    public void canGetFaceUp(){
+        assertEquals(true, card.isFaceUp());
+    }
+
+    @Test
+    public void canSwitchFaceUp(){
+        card.switchFaceUp();
+        assertEquals(false, card.isFaceUp());
     }
 }

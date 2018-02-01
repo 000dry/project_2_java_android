@@ -33,7 +33,7 @@ public class BlackjackActivity extends AppCompatActivity {
     ImageResourceFinder suitImages;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+    BlackjackAdapter adapter;
     ArrayList<Card> playerHand;
 
     ImageButton cardBack;
@@ -49,16 +49,10 @@ public class BlackjackActivity extends AppCompatActivity {
     TextView playerScore;
     TextView score1;
     TextView score2;
-//    TextView playerCard1Num1;
-//    TextView playerCard1Num2;
-//    TextView playerCard2Num1;
-//    TextView playerCard2Num2;
     TextView dealerCard1Num1;
     TextView dealerCard1Num2;
     TextView dealerCard2Num1;
     TextView dealerCard2Num2;
-//    ImageView playerCard1;
-//    ImageView playerCard2;
     ImageView dealerCard1;
     ImageView dealerCard2;
     ImageView resultsFrame;
@@ -90,16 +84,10 @@ public class BlackjackActivity extends AppCompatActivity {
         playerScore = findViewById(R.id.player_score);
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
-//        playerCard1Num1 = findViewById(R.id.player_card1_number1);
-//        playerCard1Num2 = findViewById(R.id.player_card1_number2);
-//        playerCard2Num1 = findViewById(R.id.player_card2_number1);
-//        playerCard2Num2 = findViewById(R.id.player_card2_number2);
         dealerCard1Num1 = findViewById(R.id.dealer_card1_number1);
         dealerCard1Num2 = findViewById(R.id.dealer_card1_number2);
         dealerCard2Num1 = findViewById(R.id.dealer_card2_number1);
         dealerCard2Num2 = findViewById(R.id.dealer_card2_number2);
-//        playerCard1 = findViewById(R.id.player_card1);
-//        playerCard2 = findViewById(R.id.player_card2);
         dealerCard1 = findViewById(R.id.dealer_card1);
         dealerCard2 = findViewById(R.id.dealer_card2);
         resultsFrame = findViewById(R.id.result_frame);
@@ -117,8 +105,6 @@ public class BlackjackActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         changeVisibilityOnClickDealButton();
-//        setCard(player1, 0, playerCard1, playerCard1Num1, playerCard1Num2);
-//        setCard(player1, 1, playerCard2, playerCard2Num1, playerCard2Num2);
         setCard(dealer, 0, dealerCard1, dealerCard1Num1, dealerCard1Num2);
 
         String value1 = Integer.toString(player1.checkValueOfHand());
@@ -129,10 +115,8 @@ public class BlackjackActivity extends AppCompatActivity {
 
     public void onClickHitButton(View button){
         dealer.dealCard(player1, game);
-
-        int index = playerHand.size();
-        Card card = playerHand.get(index);
-        adapter.addToPlayerHand(card);
+        adapter.notifyDataSetChanged();
+//        adapter.refreshView();
 
         String value = Integer.toString(player1.checkValueOfHand());
         Log.d("Player: ", value);
@@ -216,8 +200,6 @@ public class BlackjackActivity extends AppCompatActivity {
         split.setVisibility(View.VISIBLE);
         stick.setVisibility(View.VISIBLE);
         hit.setVisibility(View.VISIBLE);
-//        playerCard1.setVisibility(View.VISIBLE);
-//        playerCard2.setVisibility(View.VISIBLE);
         dealerCard1.setVisibility(View.VISIBLE);
         dealerCard2.setVisibility(View.VISIBLE);
     }
@@ -239,8 +221,6 @@ public class BlackjackActivity extends AppCompatActivity {
         newSessionButton.setVisibility(View.INVISIBLE);
         keepPlayingButton.setVisibility(View.INVISIBLE);
         cardBack.setVisibility(View.VISIBLE);
-//        playerCard1.setVisibility(View.INVISIBLE);
-//        playerCard2.setVisibility(View.INVISIBLE);
         dealerCard1.setVisibility(View.INVISIBLE);
         dealerCard2.setVisibility(View.INVISIBLE);
         dealerCard2.setImageResource(R.drawable.cardback);
@@ -248,10 +228,6 @@ public class BlackjackActivity extends AppCompatActivity {
     }
 
     private void resetText(){
-//        playerCard1Num1.setText("");
-//        playerCard1Num2.setText("");
-//        playerCard2Num1.setText("");
-//        playerCard2Num2.setText("");
         dealerCard1Num1.setText("");
         dealerCard1Num2.setText("");
         dealerCard2Num1.setText("");

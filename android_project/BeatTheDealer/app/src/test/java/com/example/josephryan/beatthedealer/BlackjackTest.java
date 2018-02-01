@@ -36,10 +36,10 @@ public class BlackjackTest {
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
         player2 = new Player(2, true);
-        card1 = new Card(Suit.CLUBS, Rank.FOUR);
-        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
-        card3 = new Card(Suit.HEARTS, Rank.TWO);
-        card4 = new Card(Suit.SPADES, Rank.ACE);
+        card1 = new Card(Suit.CLUBS, Rank.FOUR, true);
+        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN, true);
+        card3 = new Card(Suit.HEARTS, Rank.TWO, true);
+        card4 = new Card(Suit.SPADES, Rank.ACE, true);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class BlackjackTest {
         player1.acceptCard(card4); //A
         player1.acceptCard(card1); //4
         player1.acceptCard(card4); //A
-        assertEquals(2, blackjack.checkHandForAces(player1));
+        assertEquals(2, player1.checkHandForAces());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class BlackjackTest {
         player1.acceptCard(card4); //A
         player1.acceptCard(card4); //A
         player1.acceptCard(card1); //4
-        assertEquals(17, blackjack.shouldAdjustForLowAce(player1));
+        assertEquals(17, player1.shouldAdjustForLowAce());
     }
 
     @Test
@@ -97,10 +97,10 @@ public class BlackjackTest {
         dealer.acceptCard(card3);  //2
         dealer.acceptCard(card3);  //2
         dealer.shouldDrawCard(blackjack);
-        blackjack.shouldAdjustForLowAce(player1);
+        player1.shouldAdjustForLowAce();
         boolean result = dealer.getHand().size() > 2;
         assertEquals(true, result);
-        assertEquals(12, blackjack.shouldAdjustForLowAce(player1));
+        assertEquals(12, player1.shouldAdjustForLowAce());
     }
 
 }

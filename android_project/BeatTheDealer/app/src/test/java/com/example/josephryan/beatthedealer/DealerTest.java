@@ -34,9 +34,9 @@ public class DealerTest {
         dealer = new Dealer(2, true, deck);
         player1 = new Player(0, true);
         player2 = new Player(2, true);
-        card1 = new Card(Suit.CLUBS, Rank.FOUR);
-        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
-        card3 = new Card(Suit.HEARTS, Rank.TWO);
+        card1 = new Card(Suit.CLUBS, Rank.FOUR, true);
+        card2 = new Card(Suit.DIAMONDS, Rank.SEVEN, true);
+        card3 = new Card(Suit.HEARTS, Rank.TWO, true);
     }
 
     @Test

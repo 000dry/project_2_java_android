@@ -28,17 +28,13 @@ class BlackjackAdapter extends RecyclerView.Adapter<BlackjackAdapter.ViewHolder>
 
     public BlackjackAdapter(ArrayList<Card> playerHand){
         this.playerHand = playerHand;
-        playerHand.add(new Card(Suit.SPADES, Rank.FOUR));
-        playerHand.add(new Card(Suit.SPADES, Rank.FOUR));
-        playerHand.add(new Card(Suit.SPADES, Rank.FOUR));
-        playerHand.add(new Card(Suit.SPADES, Rank.FOUR));
-        playerHand.add(new Card(Suit.SPADES, Rank.FOUR));
         suitImages = new ImageResourceFinder();
         ranks = new RankHashMap();
     }
 
-    public void addToPlayerHand(Card card){
-        this.playerHand.add(card);
+    public void refreshView(){
+
+        this.notifyDataSetChanged();
     }
 
     @Override

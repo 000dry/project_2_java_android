@@ -24,7 +24,7 @@ public class Deck {
             for (int j = 0; j < allRanks.length; j++) {
                 Suit suit = allSuits[i];
                 Rank rank = allRanks[j];
-                Card newCard = new Card(suit, rank);
+                Card newCard = new Card(suit, rank, true);
                 this.cardDeck.add(newCard);
             }
         }
