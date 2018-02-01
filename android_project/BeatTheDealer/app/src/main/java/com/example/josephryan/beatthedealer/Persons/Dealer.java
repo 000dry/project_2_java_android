@@ -49,5 +49,9 @@ public class Dealer extends Person{
             dealCard(this, game);
         }
     }
+
+    public void setCardsExceptFirstFaceDown(){
+            this.getHand().get(1).switchFaceUp();
+    }
 }
 

@@ -98,4 +98,14 @@ public class DealerTest {
         dealer.shouldDrawCard(blackjack);
         assertEquals(3, dealer.getHand().size());
     }
+
+    @Test
+    public void canSetAllButFirstCardFaceDown(){
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card1);
+        dealer.acceptCard(card1);
+        dealer.setCardsExceptFirstFaceDown();
+        assertEquals(true, dealer.getHand().get(0).isFaceUp());
+        assertEquals(false, dealer.getHand().get(1).isFaceUp());
+    }
 }
