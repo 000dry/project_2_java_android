@@ -25,7 +25,6 @@ public class Player extends Person {
 
         if(aceCount == 0 && this.checkValueOfHand() <= 21)
             this.inGame = this.getInGame() ? false : true;
-
     }
 
 }

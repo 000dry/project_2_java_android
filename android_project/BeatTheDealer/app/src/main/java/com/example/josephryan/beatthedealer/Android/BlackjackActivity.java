@@ -32,8 +32,8 @@ public class BlackjackActivity extends AppCompatActivity {
     RecyclerView recyclerView2;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.LayoutManager layoutManager2;
-    BlackjackAdapter adapter;
-    BlackjackAdapter adapter2;
+    GameAdapter adapter;
+    GameAdapter adapter2;
     ArrayList<Card> playerHand;
     ArrayList<Card> dealerHand;
 
@@ -111,14 +111,14 @@ public class BlackjackActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new BlackjackAdapter(playerHand);
+        adapter = new GameAdapter(playerHand);
         recyclerView.setAdapter(adapter);
 
         recyclerView2 = findViewById(R.id.recycler_view2);
         recyclerView2.setHasFixedSize(true);
         layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(layoutManager2);
-        adapter2 = new BlackjackAdapter(dealerHand);
+        adapter2 = new GameAdapter(dealerHand);
         recyclerView2.setAdapter(adapter2);
 
         changeVisibilityOnClickDealButton();
@@ -171,6 +171,7 @@ public class BlackjackActivity extends AppCompatActivity {
         dealer.emptyHand();
         player1.emptyHand();
         player1.setInGameToTrue();
+        adapter.notifyDataSetChanged();
         adapter2.notifyDataSetChanged();
         changeVisibilityOnClickKeepPlaying();
     }
